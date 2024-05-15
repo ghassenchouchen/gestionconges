@@ -3,15 +3,15 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'dart:io';
-import 'package:projectunity/data/core/exception/error_const.dart';
-import 'package:projectunity/data/core/utils/bloc_status.dart';
-import 'package:projectunity/data/provider/user_state.dart';
-import 'package:projectunity/data/services/employee_service.dart';
-import 'package:projectunity/data/services/space_service.dart';
-import 'package:projectunity/data/services/storage_service.dart';
-import 'package:projectunity/ui/space/create_space/bloc/create_workspace_bloc.dart';
-import 'package:projectunity/ui/space/create_space/bloc/create_workspace_event.dart';
-import 'package:projectunity/ui/space/create_space/bloc/create_workspace_state.dart';
+import 'package:pfeconges/data/core/exception/error_const.dart';
+import 'package:pfeconges/data/core/utils/bloc_status.dart';
+import 'package:pfeconges/data/provider/user_state.dart';
+import 'package:pfeconges/data/services/employee_service.dart';
+import 'package:pfeconges/data/services/space_service.dart';
+import 'package:pfeconges/data/services/storage_service.dart';
+import 'package:pfeconges/ui/space/create_space/bloc/create_workspace_bloc.dart';
+import 'package:pfeconges/ui/space/create_space/bloc/create_workspace_event.dart';
+import 'package:pfeconges/ui/space/create_space/bloc/create_workspace_state.dart';
 import 'create_space_bloc_test.mocks.dart';
 
 @GenerateMocks([

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:projectunity/data/configs/theme.dart';
-import 'package:projectunity/data/core/extensions/context_extension.dart';
-import 'package:projectunity/data/core/extensions/date_formatter.dart';
-import 'package:projectunity/data/core/extensions/widget_extension.dart';
-import 'package:projectunity/data/core/utils/date_formatter.dart';
-import 'package:projectunity/ui/shared/events/bloc/celebrations_bloc.dart';
-import 'package:projectunity/ui/shared/events/bloc/celebrations_event.dart';
-import 'package:projectunity/ui/shared/events/bloc/celebrations_state.dart';
-import 'package:projectunity/ui/widget/error_snack_bar.dart';
-import 'package:projectunity/ui/widget/user_profile_image.dart';
+import 'package:pfeconges/data/configs/theme.dart';
+import 'package:pfeconges/data/core/extensions/context_extension.dart';
+import 'package:pfeconges/data/core/extensions/date_formatter.dart';
+import 'package:pfeconges/data/core/extensions/widget_extension.dart';
+import 'package:pfeconges/data/core/utils/date_formatter.dart';
+import 'package:pfeconges/ui/shared/events/bloc/celebrations_bloc.dart';
+import 'package:pfeconges/ui/shared/events/bloc/celebrations_event.dart';
+import 'package:pfeconges/ui/shared/events/bloc/celebrations_state.dart';
+import 'package:pfeconges/ui/widget/error_snack_bar.dart';
+import 'package:pfeconges/ui/widget/user_profile_image.dart';
 
 import '../../../data/core/utils/bloc_status.dart';
 import '../../../style/app_text_style.dart';

@@ -1,4 +1,4 @@
-name: projectunity
+name: pfeconges
 description: A new Flutter project.
 publish_to: 'none'
 
@@ -67,6 +67,14 @@ dev_dependencies:
   json_serializable: ^6.6.1
   mockito: ^5.4.0
   flutter_gen_runner: 
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/visto-splash.png"
+
+
 
 
 

@@ -1,21 +1,21 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:projectunity/data/core/exception/error_const.dart';
-import 'package:projectunity/data/core/utils/bloc_status.dart';
-import 'package:projectunity/data/model/employee/employee.dart';
-import 'package:projectunity/data/model/invitation/invitation.dart';
-import 'package:projectunity/data/model/space/space.dart';
-import 'package:projectunity/data/provider/user_state.dart';
-import 'package:projectunity/data/services/account_service.dart';
-import 'package:projectunity/data/services/auth_service.dart';
-import 'package:projectunity/data/services/employee_service.dart';
-import 'package:projectunity/data/services/invitation_services.dart';
-import 'package:projectunity/data/services/mail_notification_service.dart';
-import 'package:projectunity/data/services/space_service.dart';
-import 'package:projectunity/ui/space/join_space/bloc/join_space_bloc.dart';
-import 'package:projectunity/ui/space/join_space/bloc/join_space_event.dart';
-import 'package:projectunity/ui/space/join_space/bloc/join_space_state.dart';
+import 'package:pfeconges/data/core/exception/error_const.dart';
+import 'package:pfeconges/data/core/utils/bloc_status.dart';
+import 'package:pfeconges/data/model/employee/employee.dart';
+import 'package:pfeconges/data/model/invitation/invitation.dart';
+import 'package:pfeconges/data/model/space/space.dart';
+import 'package:pfeconges/data/provider/user_state.dart';
+import 'package:pfeconges/data/services/account_service.dart';
+import 'package:pfeconges/data/services/auth_service.dart';
+import 'package:pfeconges/data/services/employee_service.dart';
+import 'package:pfeconges/data/services/invitation_services.dart';
+import 'package:pfeconges/data/services/mail_notification_service.dart';
+import 'package:pfeconges/data/services/space_service.dart';
+import 'package:pfeconges/ui/space/join_space/bloc/join_space_bloc.dart';
+import 'package:pfeconges/ui/space/join_space/bloc/join_space_event.dart';
+import 'package:pfeconges/ui/space/join_space/bloc/join_space_state.dart';
 
 import 'join_space_test.mocks.dart';
 

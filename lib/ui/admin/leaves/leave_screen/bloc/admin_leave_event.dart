@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:projectunity/data/model/employee/employee.dart';
+import 'package:pfeconges/data/model/employee/employee.dart';
 
 abstract class AdminLeavesEvents extends Equatable {}
 

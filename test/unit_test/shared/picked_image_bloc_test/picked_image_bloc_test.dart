@@ -2,9 +2,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:projectunity/ui/widget/pick_profile_image/bloc/pick_image_bloc.dart';
-import 'package:projectunity/ui/widget/pick_profile_image/bloc/pick_image_event.dart';
-import 'package:projectunity/ui/widget/pick_profile_image/bloc/pick_image_state.dart';
+import 'package:pfeconges/ui/widget/pick_profile_image/bloc/pick_image_bloc.dart';
+import 'package:pfeconges/ui/widget/pick_profile_image/bloc/pick_image_event.dart';
+import 'package:pfeconges/ui/widget/pick_profile_image/bloc/pick_image_state.dart';
 
 import 'picked_image_bloc_test.mocks.dart';
 

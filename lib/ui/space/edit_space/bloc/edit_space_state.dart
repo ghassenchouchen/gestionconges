@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:projectunity/data/core/utils/bloc_status.dart';
+import 'package:pfeconges/data/core/utils/bloc_status.dart';
 
 class EditSpaceState extends Equatable {
   final Status deleteWorkSpaceStatus;

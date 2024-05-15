@@ -1,4 +1,4 @@
-import 'package:projectunity/data/model/space/space.dart';
+import 'package:pfeconges/data/model/space/space.dart';
 
 class JoinSpaceEvents {}
 

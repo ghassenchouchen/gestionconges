@@ -1,4 +1,4 @@
-package com.canopas.canopas_unity
+package com.pfe.unity
 
 import io.flutter.embedding.android.FlutterActivity
 

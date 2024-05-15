@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
-import 'package:projectunity/data/core/utils/const/firestore.dart';
-import 'package:projectunity/data/model/invitation/invitation.dart';
+import 'package:pfeconges/data/core/utils/const/firestore.dart';
+import 'package:pfeconges/data/model/invitation/invitation.dart';
 
 @LazySingleton()
 class InvitationService {

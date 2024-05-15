@@ -2,9 +2,9 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:projectunity/data/bloc/network/network_connection_bloc.dart';
-import 'package:projectunity/data/bloc/network/network_connection_event.dart';
-import 'package:projectunity/data/bloc/network/network_connection_state.dart';
+import 'package:pfeconges/data/bloc/network/network_connection_bloc.dart';
+import 'package:pfeconges/data/bloc/network/network_connection_event.dart';
+import 'package:pfeconges/data/bloc/network/network_connection_state.dart';
 
 import 'network_connection_bloc_test.mocks.dart';
 

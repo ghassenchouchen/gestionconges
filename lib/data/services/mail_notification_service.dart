@@ -5,9 +5,9 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-import 'package:projectunity/data/configs/api.dart';
-import 'package:projectunity/data/core/extensions/date_time.dart';
-import 'package:projectunity/data/model/leave/leave.dart';
+import 'package:pfeconges/data/configs/api.dart';
+import 'package:pfeconges/data/core/extensions/date_time.dart';
+import 'package:pfeconges/data/model/leave/leave.dart';
 
 @LazySingleton()
 class NotificationService {

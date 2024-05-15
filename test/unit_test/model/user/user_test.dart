@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:projectunity/data/model/account/account.dart';
+import 'package:pfeconges/data/model/account/account.dart';
 
 void main() {
   group("User", () {

@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:projectunity/ui/user/members/detail/bloc/user_employee_detail_event.dart';
-import 'package:projectunity/ui/user/members/detail/bloc/user_employee_detail_state.dart';
+import 'package:pfeconges/ui/user/members/detail/bloc/user_employee_detail_event.dart';
+import 'package:pfeconges/ui/user/members/detail/bloc/user_employee_detail_state.dart';
 import '../../../../../data/core/exception/error_const.dart';
 import '../../../../../data/repo/leave_repo.dart';
 

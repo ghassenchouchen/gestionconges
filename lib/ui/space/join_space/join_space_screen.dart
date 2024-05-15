@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:projectunity/data/configs/space_constant.dart';
-import 'package:projectunity/data/core/extensions/context_extension.dart';
-import 'package:projectunity/data/di/service_locator.dart';
-import 'package:projectunity/style/app_page.dart';
-import 'package:projectunity/style/app_text_style.dart';
-import 'package:projectunity/ui/space/join_space/bloc/join_space_bloc.dart';
-import 'package:projectunity/ui/space/join_space/bloc/join_space_event.dart';
-import 'package:projectunity/ui/space/join_space/bloc/join_space_state.dart';
-import 'package:projectunity/ui/space/join_space/widget/app_section.dart';
-import 'package:projectunity/ui/space/join_space/widget/spaces.dart';
-import 'package:projectunity/ui/widget/error_snack_bar.dart';
+import 'package:pfeconges/data/configs/space_constant.dart';
+import 'package:pfeconges/data/core/extensions/context_extension.dart';
+import 'package:pfeconges/data/di/service_locator.dart';
+import 'package:pfeconges/style/app_page.dart';
+import 'package:pfeconges/style/app_text_style.dart';
+import 'package:pfeconges/ui/space/join_space/bloc/join_space_bloc.dart';
+import 'package:pfeconges/ui/space/join_space/bloc/join_space_event.dart';
+import 'package:pfeconges/ui/space/join_space/bloc/join_space_state.dart';
+import 'package:pfeconges/ui/space/join_space/widget/app_section.dart';
+import 'package:pfeconges/ui/space/join_space/widget/spaces.dart';
+import 'package:pfeconges/ui/widget/error_snack_bar.dart';
 import '../../../data/core/utils/bloc_status.dart';
 import '../../widget/app_dialog.dart';
 

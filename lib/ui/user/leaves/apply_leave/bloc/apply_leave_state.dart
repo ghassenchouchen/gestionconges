@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:projectunity/data/model/leave/leave.dart';
+import 'package:pfeconges/data/model/leave/leave.dart';
 
 import '../../../../../data/core/utils/bloc_status.dart';
 

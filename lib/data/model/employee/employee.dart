@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:projectunity/data/core/converters/date_converter.dart';
+import 'package:pfeconges/data/core/converters/date_converter.dart';
 
 part 'employee.g.dart';
 

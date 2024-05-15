@@ -1,12 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:projectunity/data/repo/employee_repo.dart';
-import 'package:projectunity/data/core/exception/error_const.dart';
-import 'package:projectunity/data/model/employee/employee.dart';
-import 'package:projectunity/ui/user/members/members_screen/bloc/user_members_bloc.dart';
-import 'package:projectunity/ui/user/members/members_screen/bloc/user_members_event.dart';
-import 'package:projectunity/ui/user/members/members_screen/bloc/user_members_state.dart';
+import 'package:pfeconges/data/repo/employee_repo.dart';
+import 'package:pfeconges/data/core/exception/error_const.dart';
+import 'package:pfeconges/data/model/employee/employee.dart';
+import 'package:pfeconges/ui/user/members/members_screen/bloc/user_members_bloc.dart';
+import 'package:pfeconges/ui/user/members/members_screen/bloc/user_members_event.dart';
+import 'package:pfeconges/ui/user/members/members_screen/bloc/user_members_state.dart';
 import 'user_employees_test.mocks.dart';
 
 @GenerateMocks([EmployeeRepo])
@@ -17,10 +17,10 @@ void main() {
   final employee = Employee(
     uid: 'id',
     role: Role.admin,
-    name: 'Andrew jhone',
-    employeeId: 'CA 1254',
-    email: 'andrew.j@canopas.com',
-    designation: 'Android developer',
+    name: 'Flen Fleni',
+    employeeId: '',
+    email: 'flen.fln@visto-consulting.com',
+    designation: 'Flutter developer',
     dateOfJoining: DateTime(2000),
   );
 

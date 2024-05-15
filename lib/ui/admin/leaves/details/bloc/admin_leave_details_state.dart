@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:projectunity/data/model/leave_count.dart';
+import 'package:pfeconges/data/model/leave_count.dart';
 import '../../../../../data/core/utils/bloc_status.dart';
 
 class AdminLeaveDetailsState extends Equatable {

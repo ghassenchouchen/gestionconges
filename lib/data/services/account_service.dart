@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
-import 'package:projectunity/data/model/session/session.dart';
-import 'package:projectunity/data/provider/device_info.dart';
+import 'package:pfeconges/data/model/session/session.dart';
+import 'package:pfeconges/data/provider/device_info.dart';
 import '../core/utils/const/firestore.dart';
 import '../model/account/account.dart';
 

@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:projectunity/data/core/extensions/context_extension.dart';
+import 'package:pfeconges/data/core/extensions/context_extension.dart';
 
 class ImageProfile extends StatelessWidget {
   final String? imageUrl;

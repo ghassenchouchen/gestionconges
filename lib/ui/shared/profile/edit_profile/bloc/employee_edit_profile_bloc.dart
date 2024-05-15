@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:projectunity/data/core/mixin/input_validation.dart';
-import 'package:projectunity/data/core/utils/const/image_storage_path_const.dart';
+import 'package:pfeconges/data/core/mixin/input_validation.dart';
+import 'package:pfeconges/data/core/utils/const/image_storage_path_const.dart';
 import '../../../../../data/core/exception/error_const.dart';
 import '../../../../../data/core/utils/bloc_status.dart';
 import '../../../../../data/model/employee/employee.dart';

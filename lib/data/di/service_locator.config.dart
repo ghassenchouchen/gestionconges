@@ -18,87 +18,85 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:http/http.dart' as _i4;
 import 'package:image_picker/image_picker.dart' as _i14;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:projectunity/app_router.dart' as _i27;
-import 'package:projectunity/data/bloc/network/network_connection_bloc.dart'
+import 'package:pfeconges/app_router.dart' as _i27;
+import 'package:pfeconges/data/bloc/network/network_connection_bloc.dart'
     as _i17;
-import 'package:projectunity/data/bloc/user_state/space_change_notifier.dart'
+import 'package:pfeconges/data/bloc/user_state/space_change_notifier.dart'
     as _i21;
-import 'package:projectunity/data/bloc/user_state/user_state_controller_bloc.dart'
+import 'package:pfeconges/data/bloc/user_state/user_state_controller_bloc.dart'
     as _i54;
-import 'package:projectunity/data/core/functions/shared_function.dart' as _i3;
-import 'package:projectunity/data/di/app_module.dart' as _i61;
-import 'package:projectunity/data/pref/user_preference.dart' as _i24;
-import 'package:projectunity/data/provider/device_info.dart' as _i8;
-import 'package:projectunity/data/provider/user_state.dart' as _i25;
-import 'package:projectunity/data/repo/employee_repo.dart' as _i52;
-import 'package:projectunity/data/repo/form_repo.dart' as _i31;
-import 'package:projectunity/data/repo/leave_repo.dart' as _i34;
-import 'package:projectunity/data/services/account_service.dart' as _i26;
-import 'package:projectunity/data/services/auth_service.dart' as _i28;
-import 'package:projectunity/data/services/employee_service.dart' as _i30;
-import 'package:projectunity/data/services/form_service.dart' as _i13;
-import 'package:projectunity/data/services/invitation_services.dart' as _i15;
-import 'package:projectunity/data/services/leave_service.dart' as _i16;
-import 'package:projectunity/data/services/mail_notification_service.dart'
-    as _i18;
-import 'package:projectunity/data/services/space_service.dart' as _i22;
-import 'package:projectunity/data/services/storage_service.dart' as _i23;
-import 'package:projectunity/data/state_manager/auth/desktop/desktop_auth_manager.dart'
+import 'package:pfeconges/data/core/functions/shared_function.dart' as _i3;
+import 'package:pfeconges/data/di/app_module.dart' as _i61;
+import 'package:pfeconges/data/pref/user_preference.dart' as _i24;
+import 'package:pfeconges/data/provider/device_info.dart' as _i8;
+import 'package:pfeconges/data/provider/user_state.dart' as _i25;
+import 'package:pfeconges/data/repo/employee_repo.dart' as _i52;
+import 'package:pfeconges/data/repo/form_repo.dart' as _i31;
+import 'package:pfeconges/data/repo/leave_repo.dart' as _i34;
+import 'package:pfeconges/data/services/account_service.dart' as _i26;
+import 'package:pfeconges/data/services/auth_service.dart' as _i28;
+import 'package:pfeconges/data/services/employee_service.dart' as _i30;
+import 'package:pfeconges/data/services/form_service.dart' as _i13;
+import 'package:pfeconges/data/services/invitation_services.dart' as _i15;
+import 'package:pfeconges/data/services/leave_service.dart' as _i16;
+import 'package:pfeconges/data/services/mail_notification_service.dart' as _i18;
+import 'package:pfeconges/data/services/space_service.dart' as _i22;
+import 'package:pfeconges/data/services/storage_service.dart' as _i23;
+import 'package:pfeconges/data/state_manager/auth/desktop/desktop_auth_manager.dart'
     as _i6;
-import 'package:projectunity/ui/admin/forms/create_form/bloc/create_form_bloc.dart'
+import 'package:pfeconges/ui/admin/forms/create_form/bloc/create_form_bloc.dart'
     as _i48;
-import 'package:projectunity/ui/admin/forms/form_list/bloc/admin_form_list_bloc.dart'
+import 'package:pfeconges/ui/admin/forms/form_list/bloc/admin_form_list_bloc.dart'
     as _i44;
-import 'package:projectunity/ui/admin/home/home_screen/bloc/admin_home_bloc.dart'
+import 'package:pfeconges/ui/admin/home/home_screen/bloc/admin_home_bloc.dart'
     as _i57;
-import 'package:projectunity/ui/admin/home/invite_member/bloc/invite_member_bloc.dart'
+import 'package:pfeconges/ui/admin/home/invite_member/bloc/invite_member_bloc.dart'
     as _i32;
-import 'package:projectunity/ui/admin/leaves/details/bloc/admin_leave_details_bloc.dart'
+import 'package:pfeconges/ui/admin/leaves/details/bloc/admin_leave_details_bloc.dart'
     as _i45;
-import 'package:projectunity/ui/admin/leaves/leave_screen/bloc/admin_leaves_bloc.dart'
+import 'package:pfeconges/ui/admin/leaves/leave_screen/bloc/admin_leaves_bloc.dart'
     as _i58;
-import 'package:projectunity/ui/admin/members/detail/bloc/employee_detail_bloc.dart'
+import 'package:pfeconges/ui/admin/members/detail/bloc/employee_detail_bloc.dart'
     as _i60;
-import 'package:projectunity/ui/admin/members/details_leaves/bloc/admin_employee_details_leave_bloc.dart'
+import 'package:pfeconges/ui/admin/members/details_leaves/bloc/admin_employee_details_leave_bloc.dart'
     as _i43;
-import 'package:projectunity/ui/admin/members/edit_employee/bloc/admin_edit_employee_bloc.dart'
+import 'package:pfeconges/ui/admin/members/edit_employee/bloc/admin_edit_employee_bloc.dart'
     as _i42;
-import 'package:projectunity/ui/admin/members/list/bloc/member_list_bloc.dart'
+import 'package:pfeconges/ui/admin/members/list/bloc/member_list_bloc.dart'
     as _i59;
-import 'package:projectunity/ui/shared/appbar_drawer/drawer/bloc/app_drawer_bloc.dart'
+import 'package:pfeconges/ui/shared/appbar_drawer/drawer/bloc/app_drawer_bloc.dart'
     as _i50;
-import 'package:projectunity/ui/shared/events/bloc/celebrations_bloc.dart'
-    as _i47;
-import 'package:projectunity/ui/shared/profile/edit_profile/bloc/employee_edit_profile_bloc.dart'
+import 'package:pfeconges/ui/shared/events/bloc/celebrations_bloc.dart' as _i47;
+import 'package:pfeconges/ui/shared/profile/edit_profile/bloc/employee_edit_profile_bloc.dart'
     as _i51;
-import 'package:projectunity/ui/shared/profile/view_profile/bloc/view_profile_bloc.dart'
+import 'package:pfeconges/ui/shared/profile/view_profile/bloc/view_profile_bloc.dart'
     as _i55;
-import 'package:projectunity/ui/shared/who_is_out_card/bloc/who_is_out_card_bloc.dart'
+import 'package:pfeconges/ui/shared/who_is_out_card/bloc/who_is_out_card_bloc.dart'
     as _i56;
-import 'package:projectunity/ui/sign_in/bloc/sign_in_view_bloc.dart' as _i35;
-import 'package:projectunity/ui/space/create_space/bloc/create_workspace_bloc.dart'
+import 'package:pfeconges/ui/sign_in/bloc/sign_in_view_bloc.dart' as _i35;
+import 'package:pfeconges/ui/space/create_space/bloc/create_workspace_bloc.dart'
     as _i49;
-import 'package:projectunity/ui/space/edit_space/bloc/edit_space_bloc.dart'
+import 'package:pfeconges/ui/space/edit_space/bloc/edit_space_bloc.dart'
     as _i29;
-import 'package:projectunity/ui/space/join_space/bloc/join_space_bloc.dart'
+import 'package:pfeconges/ui/space/join_space/bloc/join_space_bloc.dart'
     as _i33;
-import 'package:projectunity/ui/user/forms/form_list_screen/bloc/user_forms_list_screen_bloc.dart'
+import 'package:pfeconges/ui/user/forms/form_list_screen/bloc/user_forms_list_screen_bloc.dart'
     as _i37;
-import 'package:projectunity/ui/user/home/home_screen/bloc/user_home_bloc.dart'
+import 'package:pfeconges/ui/user/home/home_screen/bloc/user_home_bloc.dart'
     as _i38;
-import 'package:projectunity/ui/user/leaves/apply_leave/bloc/apply_leave_bloc.dart'
+import 'package:pfeconges/ui/user/leaves/apply_leave/bloc/apply_leave_bloc.dart'
     as _i46;
-import 'package:projectunity/ui/user/leaves/detail/bloc/user_leave_detail_bloc.dart'
+import 'package:pfeconges/ui/user/leaves/detail/bloc/user_leave_detail_bloc.dart'
     as _i41;
-import 'package:projectunity/ui/user/leaves/leaves_screen/bloc/leave_count/user_leave_count_bloc.dart'
+import 'package:pfeconges/ui/user/leaves/leaves_screen/bloc/leave_count/user_leave_count_bloc.dart'
     as _i40;
-import 'package:projectunity/ui/user/leaves/leaves_screen/bloc/leaves/user_leave_bloc.dart'
+import 'package:pfeconges/ui/user/leaves/leaves_screen/bloc/leaves/user_leave_bloc.dart'
     as _i39;
-import 'package:projectunity/ui/user/members/detail/bloc/user_employee_detail_bloc.dart'
+import 'package:pfeconges/ui/user/members/detail/bloc/user_employee_detail_bloc.dart'
     as _i36;
-import 'package:projectunity/ui/user/members/members_screen/bloc/user_members_bloc.dart'
+import 'package:pfeconges/ui/user/members/members_screen/bloc/user_members_bloc.dart'
     as _i53;
-import 'package:projectunity/ui/widget/pick_profile_image/bloc/pick_image_bloc.dart'
+import 'package:pfeconges/ui/widget/pick_profile_image/bloc/pick_image_bloc.dart'
     as _i19;
 import 'package:shared_preferences/shared_preferences.dart' as _i20;
 

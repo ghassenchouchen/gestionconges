@@ -2,13 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:projectunity/data/model/account/account.dart';
-import 'package:projectunity/data/provider/user_state.dart';
-import 'package:projectunity/data/services/account_service.dart';
-import 'package:projectunity/data/services/auth_service.dart';
-import 'package:projectunity/ui/sign_in/bloc/sign_in_view_bloc.dart';
-import 'package:projectunity/ui/sign_in/bloc/sign_in_view_event.dart';
-import 'package:projectunity/ui/sign_in/bloc/sign_in_view_state.dart';
+import 'package:pfeconges/data/model/account/account.dart';
+import 'package:pfeconges/data/provider/user_state.dart';
+import 'package:pfeconges/data/services/account_service.dart';
+import 'package:pfeconges/data/services/auth_service.dart';
+import 'package:pfeconges/ui/sign_in/bloc/sign_in_view_bloc.dart';
+import 'package:pfeconges/ui/sign_in/bloc/sign_in_view_event.dart';
+import 'package:pfeconges/ui/sign_in/bloc/sign_in_view_state.dart';
 
 import 'login_bloc_test.mocks.dart';
 

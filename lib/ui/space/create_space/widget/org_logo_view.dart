@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projectunity/data/core/extensions/context_extension.dart';
-import 'package:projectunity/ui/widget/space_logo_view.dart';
+import 'package:pfeconges/data/core/extensions/context_extension.dart';
+import 'package:pfeconges/ui/widget/space_logo_view.dart';
 
 class OrgLogoView extends StatelessWidget {
   final void Function()? onButtonTap;

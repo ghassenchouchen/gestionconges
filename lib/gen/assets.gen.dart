@@ -12,11 +12,18 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/app_logo.svg
-  String get appLogo => 'assets/images/app_logo.svg';
+  /// File path: assets/images/appLogo.svg
+  String get appLogo => 'assets/images/appLogo.svg';
 
   /// File path: assets/images/apple_logo.svg
   String get appleLogo => 'assets/images/apple_logo.svg';
+
+  /// File path: assets/images/background.jpeg
+  AssetGenImage get background =>
+      const AssetGenImage('assets/images/background.jpeg');
+
+  /// File path: assets/images/calendar.svg
+  String get calendar => 'assets/images/calendar.svg';
 
   /// File path: assets/images/calendar_filled.svg
   String get calendarFilled => 'assets/images/calendar_filled.svg';
@@ -27,6 +34,9 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/google_logo.svg
   String get googleLogo => 'assets/images/google_logo.svg';
+
+  /// File path: assets/images/history.png
+  AssetGenImage get history => const AssetGenImage('assets/images/history.png');
 
   /// File path: assets/images/home_filled.svg
   String get homeFilled => 'assets/images/home_filled.svg';
@@ -50,19 +60,23 @@ class $AssetsImagesGen {
   /// File path: assets/images/pencil-square.svg
   String get pencilSquare => 'assets/images/pencil-square.svg';
 
-  /// File path: assets/images/round_logo.svg
-  String get roundLogo => 'assets/images/round_logo.svg';
-
   /// File path: assets/images/users_filled.svg
   String get usersFilled => 'assets/images/users_filled.svg';
+
+  /// File path: assets/images/visto-icon.png
+  AssetGenImage get vistoIcon =>
+      const AssetGenImage('assets/images/visto-icon.png');
 
   /// List of all assets
   List<dynamic> get values => [
         appLogo,
         appleLogo,
+        background,
+        calendar,
         calendarFilled,
         emptyState,
         googleLogo,
+        history,
         homeFilled,
         icCalendar,
         icHome,
@@ -70,8 +84,8 @@ class $AssetsImagesGen {
         icUsers,
         officeGrowth,
         pencilSquare,
-        roundLogo,
-        usersFilled
+        usersFilled,
+        vistoIcon
       ];
 }
 

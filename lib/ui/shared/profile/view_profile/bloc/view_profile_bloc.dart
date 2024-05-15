@@ -1,10 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:projectunity/data/repo/employee_repo.dart';
-import 'package:projectunity/data/core/exception/error_const.dart';
-import 'package:projectunity/data/model/employee/employee.dart';
-import 'package:projectunity/ui/shared/profile/view_profile/bloc/view_profile_event.dart';
-import 'package:projectunity/ui/shared/profile/view_profile/bloc/view_profile_state.dart';
+import 'package:pfeconges/data/repo/employee_repo.dart';
+import 'package:pfeconges/data/core/exception/error_const.dart';
+import 'package:pfeconges/data/model/employee/employee.dart';
+import 'package:pfeconges/ui/shared/profile/view_profile/bloc/view_profile_event.dart';
+import 'package:pfeconges/ui/shared/profile/view_profile/bloc/view_profile_state.dart';
 import '../../../../../data/provider/user_state.dart';
 
 @Injectable()

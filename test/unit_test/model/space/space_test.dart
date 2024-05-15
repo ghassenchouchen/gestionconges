@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:projectunity/data/model/space/space.dart';
+import 'package:pfeconges/data/model/space/space.dart';
 
 void main() {
   group("User", () {

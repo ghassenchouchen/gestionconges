@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projectunity/style/app_text_style.dart';
+import 'package:pfeconges/style/app_text_style.dart';
 
 const Color primaryColor = Color(0xff5966EA);
 
