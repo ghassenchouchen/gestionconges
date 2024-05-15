@@ -1,0 +1,67 @@
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
+import 'package:projectunity/data/model/account/account.dart';
+import 'package:projectunity/data/provider/user_state.dart';
+import 'package:projectunity/data/services/account_service.dart';
+import 'package:projectunity/data/services/auth_service.dart';
+import 'package:projectunity/ui/sign_in/bloc/sign_in_view_bloc.dart';
+import 'package:projectunity/ui/sign_in/bloc/sign_in_view_event.dart';
+import 'package:projectunity/ui/sign_in/bloc/sign_in_view_state.dart';
+
+import 'login_bloc_test.mocks.dart';
+
+@GenerateMocks([
+  AuthService,
+  AccountService,
+  UserStateNotifier,
+  firebase_auth.User,
+])
+void main() {
+  late UserStateNotifier userStateNotifier;
+  late AuthService authService;
+  late AccountService accountService;
+
+  late SignInBloc bloc;
+  late firebase_auth.User authUser;
+
+  const Account user = Account(uid: 'uid', email: "dummy@canopas.com");
+
+  setUp(() {
+    userStateNotifier = MockUserStateNotifier();
+    authUser = MockUser();
+    authService = MockAuthService();
+    accountService = MockAccountService();
+    bloc = SignInBloc(userStateNotifier, authService, accountService);
+  });
+
+  group("Log in with google test", () {
+    test("Set initial state on cancel login test", () async {
+      when(authService.signInWithGoogle()).thenAnswer((_) async => null);
+      bloc.add(GoogleSignInEvent());
+      expect(
+          bloc.stream,
+          emitsInOrder([
+            const SignInState(googleSignInLoading: true),
+            const SignInState(googleSignInLoading: false),
+          ]));
+    });
+
+    test("Login success test", () async {
+      when(authUser.uid).thenAnswer((realInvocation) => user.uid);
+      when(authUser.email).thenAnswer((realInvocation) => user.email);
+      when(authService.signInWithGoogle()).thenAnswer((_) async => authUser);
+      when(accountService.getUser(authUser)).thenAnswer((_) async => user);
+      bloc.add(GoogleSignInEvent());
+      expect(
+          bloc.stream,
+          emitsInOrder([
+            const SignInState(googleSignInLoading: true),
+            const SignInState(googleSignInLoading: false, signInSuccess: true),
+          ]));
+      await untilCalled(userStateNotifier.setUser(user));
+      verify(userStateNotifier.setUser(user)).called(1);
+    });
+  });
+}

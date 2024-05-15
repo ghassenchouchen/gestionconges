@@ -1,0 +1,10 @@
+const String googleAuthApi = "https://accounts.google.com/o/oauth2/v2/auth";
+const String googleTokenApi = "https://oauth2.googleapis.com/token";
+const String emailScope = 'email';
+const String headerTitle = 'Accept';
+const String headerData = 'application/json';
+const String redirectUrl = 'http://localhost:';
+const String authenticatedResponse = 'You can close this tab.';
+const String revokeTokenUrl = 'https://oauth2.googleapis.com/revoke';
+const String token = 'token';
+const String baseURL = "prod-stack-api.canopas.com";

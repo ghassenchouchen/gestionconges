@@ -1,0 +1,468 @@
+
+{
+  "language": "Français",
+  "appTitle": "LeaveFlow",
+
+  "sign_in_description_text": "Vous aide à gérer facilement les congés avec LeaveFlow.",
+  "sign_in_title_text": "Gestion facile des congés\navec LeaveFlow",
+  
+  "settings_tag": "Paramètres",
+  "members_tag": "Membres",
+  "leaves_tag": "Congés",
+
+  "recent_tag": "Récent",
+  "past_tag": "Passé",
+  "upcoming_tag": "À venir",
+
+  "deactivate_tag": "Désactiver",
+  "activate_tag": "Activer",
+
+  "delete_button_tag": "Supprimer",
+  "save_tag": "Enregistrer",
+  "edit_tag": "Modifier",
+  "reason_tag": "Note",
+  "details_tag": "Détails",
+  "sign_out_tag": "Déconnexion",
+  "update_tag": "Mettre à jour",
+  "or_tag": "OU",
+  "next_tag": "Suivant",
+  "back_tag": "Retour",
+  "add_tag": "Ajouter",
+  "request_tag": "Demandes",
+  "alert_cancel_action": "Annuler",
+  "all_tag": "Tout",
+  "ok_tag": "OK",
+  "profile_tag": "Profile",
+  "view_all_tag": "Voir tout",
+  
+"spaces_title": "Département",
+  "delete_space_text": "Suppimer département",
+  "delete_dialog_description_text": "Are you sure you want to permanently delete space?",
+  "change_space_tag": "Modifier Département",
+  "company_name_tag": "Visto Consulting",
+  "create_space_Website_url_label": "Website URL (Optional)",
+  "create_new_space_title": "Ajouter un nouveau département",
+  "create_own_space_title": "Ajouter votre département",
+  "welcome_to_unity_text": "Welcome",
+  "spaces_list_title": "Départements pour  {email}",
+  "@spaces_list_title": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+
+  "edit_space_button_tag": "Modifier Département",
+  "view_profile_button_tag": "Consulter Profile",
+
+  "empty_space_list_msg": "Looks like you haven't been added to any organizations yet. Please contact your administrator to get started.",
+
+  "create_space_tag": "Ajouter Département",
+  "create_space_tab_1_tag": "Département Details",
+  "create_space_tab_2_tag": "Département Réglage",
+  "create_space_tab_3_tag": "Personal Details",
+  "create_space_enter_space_details_text": "Entrez vos détails",
+  "create_space_set_up_your_space_text": "Définir votre département",
+  "create_space_enter_your_details_text": "Entrez vos détails",
+  "create_space_enter_your_name_hint_text": "Votre nom",
+  "create_space_invalid_time_off_error": "Entrez une date valide",
+  "create_space_invalid_name_error": "Entrez un nom valide",
+  "create_space_invalid_website_url_error": "Please enter valid website url",
+
+  "empty_change_space_title": "Pas de départements",
+  "empty_change_space_description": "Vous n'avez pas un autre département",
+  "company_name_tag": "Nom de l'entreprise",
+
+  "welcome_to_LeaveFlow_text": "Bienvenue sur LeaveFlow",
+
+  "view_profile_button_tag": "Voir le profile",
+
+  "days_placeholder_leave": "{leave,plural,=0{{leave} Demande de congé} =1{{leave} Demande de congé} other{{leave} Demandes de congé}}",
+  "@days_placeholder_leave": {
+    "description": "Passer la valeur des congés pour les jours de congé",
+    "placeholders": {
+      "leave": {
+        "type": "int"
+      }
+    }
+  },
+
+  "page_not_found_error_code": "404",
+  "page_not_found_error_title": "Page non trouvée !",
+  "page_not_found_error_message": "Il semble que nous ne puissions pas trouver la page que vous recherchez !",
+
+  "leave_type_placeholder_text": "{leaveType, select, 0{Congé annuel} 1{Congé maladie} other{Autre}}",
+  "@leave_type_placeholder_text": {
+    "description": "Obtenir le type de congé à partir de l'état de congé",
+    "placeholders": {
+      "leaveType": {
+        "type": "String"
+      }
+    }
+  },
+  "leave_status_placeholder_text": "{leaveStatus, select, 1{En attente} 2{Approuvé} 3{Rejeté} 4{Annulé} other{autre}}",
+  "@leave_status_placeholder_text": {
+    "description": "Obtenir le type de congé à partir du statut de congé",
+    "placeholders": {
+      "leaveStatus": {
+        "type": "String"
+      }
+    }
+  },
+
+  "user_detail_role_type": "{role, select, admin{Admin} employee{Employé} hr{RH} other{autre}}",
+  "@user_detail_role_type": {
+    "description": "Passer la valeur du rôle pour obtenir le rôle de l'utilisateur",
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+
+  "dateFormatter_yesterday": "Hier",
+  "dateFormatter_today": "Aujourd'hui",
+  "dateFormatter_just_now": "À l'instant",
+  "dateFormatter_first_half_day": "Première moitié de la journée",
+  "dateFormatter_second_half_day": "Deuxième moitié de la journée",
+  "dateFormatter_full_day": "Journée complète",
+
+  "dateFormatter_placeholder_other_days": "{totalLeave} Jours",
+  "@dateFormatter_placeholder_other_days": {
+    "description": "Définir le nombre total de congés supérieur à un jour",
+    "placeholders": {
+      "totalLeave": {
+        "type": "double",
+        "format": "decimalPattern"
+      }
+    }
+  },
+
+  "year_tag": "Année",
+  "year_ago_tag": "il y a un an",
+  "years_ago_tag": "il y a {years} ans",
+  "month_ago_tag": "il y a un mois",
+  "months_ago_tag": "il y a {months} mois",
+  "week_ago_tag": "il y a une semaine",
+  "weeks_ago_tag": "il y a {weeks} semaines",
+  "day_ago_tag": "il y a un jour",
+  "days_ago_tag": "il y a {days} jours",
+  "hour_ago_tag": "il y a une heure",
+  "hours_ago_tag": "il y a {hours} heures",
+  "minute_ago_tag": "il y a une minute",
+  "minutes_ago_tag": "il y a {minutes} minutes",
+  "dateFormatter_tomorrow": "Demain",
+  "date_formatter_leave_request_total_half_day_text": "Durée totale du congé : demi-journée",
+  "date_formatter_leave_request_total_zero_day_text": "Durée totale du congé : 0 jour",
+  "date_formatter_leave_request_total_one_day_text": "Durée totale du congé : 1 jour",
+
+  "date_formatter_leave_request_total_days_text": "Durée totale du congé : {day} jours",
+  "@date_formatter_leave_request_total_days_text": {
+    "placeholders": {
+      "day": {
+        "type": "double",
+        "format": "decimalPattern"
+      }
+    }
+  },
+
+  "date_format_yMMMd": "{date}",
+  "@date_format_yMMMd": {
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "yMMMd"
+      }
+    }
+  },
+
+  "date_format_yMMMM": "{date}",
+  "@date_format_yMMMM": {
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "yMMMM"
+      }
+    }
+  },
+  "leave_day_duration_tag": "{dayDuration, select, fullLeave{Journée} firstHalfLeave{1ère moitié} secondHalfLeave{2ème moitié} other{Autre}}",
+  "@leave_day_duration_tag": {
+    "description": "Passer LeaveDayDuration pour obtenir la chaîne",
+    "placeholders": {
+      "dayDuration": {
+        "type": "String"
+      }
+    }
+  },
+
+  "leave_calendar_title": "Calendrier des congés",
+
+
+  "range_leave_calendar_title": "Calendrier des congés de l'utilisateur",
+  "calendar_no_leave_msg": "Aucun congé le {date}",
+  "@calendar_no_leave_msg": {
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "yMMMd"
+      }
+    }
+  },
+
+  "range_calendar_no_leave_msg": "Aucun congé du\n{startDate} au {endDate}",
+  "@range_calendar_no_leave_msg": {
+    "placeholders": {
+      "startDate": {
+        "type": "DateTime",
+        "format": "yMMMd"
+      },
+      "endDate": {
+        "type": "DateTime",
+        "format": "yMMMd"
+      }
+    }
+  },
+
+  "who_is_out_card_no_leave_present_title": "Tous sont présents",
+  "who_is_out_card_no_leave_present_message": "Tous sont présents",
+
+  "who_is_out_card_see_all_button_tag": "Voir tout",
+  "who_is_out_card_title": "Qui est hors du bureau ?",
+
+  "state_controller_access_revoked_alert_dialogue_title": "Accès révoqué",
+    "state_controller_access_revoked_alert_dialogue_subtitle":"Vous n'avez pas d'accès",
+
+  "empty_request_message": "Empty request",
+  "empty_request_title": "Aucune demande de congé en attente",
+
+  "admin_home_absence_tag": "Absence",
+  "admin_home_invite_member_appbar_tag": "Inviter un membre",
+  "invite_tag": "Inviter",
+  "admin_home_invite_member_hint_text": "Ajouter un membre par e-mail",
+  "admin_home_invite_member_error_email": "Veuillez saisir une adresse e-mail valide",
+  "member_already_invited_error": "Membre déjà invité !",
+
+  "admin_home_add_member_error_email": "Veuillez saisir une adresse e-mail valide",
+  "admin_home_add_member_error_name": "Le nom est trop court !",
+  "admin_home_add_member_complete_mandatory_field_error": "Veuillez remplir ce champ obligatoire",
+  "admin_home_add_member_employee_added_message": "Un employé a été ajouté avec succès !",
+  "admin_home_add_member_submit_button_tag": "Soumettre",
+  "admin_home_add_member_designation_tag": "Désignation",
+  "admin_home_add_member_addMember_tag": "Ajouter un membre",
+  "admin_home_add_member_name_hint_text": "Flen Fleni",
+  "admin_home_add_member_employee_id_hint_text": "1001",
+  "admin_home_add_member_email_hint_text": "flen.fleni@visto-consulting.com",
+  "admin_home_add_member_designation_hint_text": "Développeur Flutter",
+  "admin_home_add_member_level_hint_text": "Ingénieur junior",
+  "admin_home_add_member_mobile_number_hint_text": "+216 123456-7890",
+
+
+  "event_card_title": "Célébrations de la semaine",
+  "birthdays_tag": "Anniversaires",
+  "work_anniversaries_tag": "Anniversaires de travail",
+  "no_event_text": "Pas de festivités au calendrier cette semaine",
+  "upcoming_birthday_text": "L'anniversaire de {name} approche le",
+  "@upcoming_birthday_text": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "present_birthday_text": "Aujourd'hui, c'est l'anniversaire de {name} 🥳🥳! Faisons-le briller avec des vœux joyeux !",
+  "@present_birthday_text": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "upcoming_anniversary_text": "{name} aura achevé avec succès {years} ans avec nous le",
+  "@upcoming_anniversary_text": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "present_anniversary_text": "Félicitations pour {years} avec nous {name} 💐💐! Continuez votre bon travail !",
+  "@present_anniversary_text": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+
+  "search_employee_tag": "Rechercher un employé",
+  "empty_leaves_message": "Il n'y a pas de congés, encore",
+
+  "admin_leave_detail_enter_reason_tag": "Entrer le message",
+  "admin_leave_detail_note_tag": "Note",
+  "admin_leave_detail_reject_button_tag": "Rejeter",
+  "admin_leave_detail_approve_button_tag": "Approuver",
+
+  "admin_employee_detail_profile_tag": "Profile",
+  "admin_employees_detail_time_off_tag": "Temps libre",
+
+  "invited_members_title": "Membres invités",
+  "inactive_members_title": "Membres inactifs",
+
+  "admin_setting_update_leave_total_leaves_tag": "Congés totaux",
+  "yearly_paid_time_off_tag": "Congé payé annuel",
+  "hr_leave_record_tag": "Historique des congés",
+
+  "leave_notification_email_tag": "E-mail de notification de congé",
+
+  "user_leave_apply_tag": "Appliquer",
+  "user_leave_used_leaves_tag": "Congés utilisés",
+  "user_leave_past_leaves_tag": "Congés passés",
+  "user_leave_upcoming_leaves_tag": "Congés à venir",
+  "user_leave_show_less_tag": "Afficher moins",
+  "user_leave_view_more_tag": "Voir plus",
+  "no_leaves_tag": "Pas de congés !",
+  "user_leave_empty_screen_message": "Empty",
+
+  "user_leaves_apply_appbar_tag": "Demande de congé",
+  "user_leaves_apply_enter_reason_tag": "Entrer une note",
+  "user_leaves_apply_leave_type_tag": "Type",
+  "user_leaves_apply_leave_start_tag": "Début",
+  "user_leaves_apply_leave_end_tag": "Fin",
+  "user_leaves_apply_leave_button_tag": "Demander un congé",
+  "user_leaves_apply_leave_error_message_fill_details": "Veuillez remplir tous les détails",
+  "user_leaves_apply_leave_success_message": "Votre demande a été envoyée avec succès !",
+
+  "cancel_button_tag": "Annuler",
+  "cancel_leave_message": "Le congé a été annulé avec succès !",
+
+ 
+
+ "user_settings_edit_select_tag": "Sélectionner",
+  "user_setting_take_photo_tag": "Prendre une photo",
+  "user_setting_gallery_tag": "Galerie",
+    "space_tag":"Département",
+  "employee_designation_tag": "Désignation",
+  "employee_role_tag": "Rôle",
+  "employee_mobile_tag": "Mobile",
+  "employee_email_tag": "E-mail",
+  "employee_address_tag": "Adresse",
+  "employee_gender_tag": "Genre",
+  "employee_dateOfBirth_tag": "Date de naissance",
+  "employee_dateOfJoin_tag": "Date d'adhésion",
+  "employee_level_tag": "Niveau",
+  "employee_employeeID_tag": "ID Employé",
+  "employee_name_tag": "Nom",
+
+  "admin_leave_detail_button_reject": "Rejeter",
+  "admin_leave_detail_button_approve": "Approuver",
+  "admin_leave_detail_button_ok": "OK",
+  "admin_leave_detail_daysLeft_tag": "Jours restants",
+  "admin_leave_empty_screen_message": "Aucun congé, encore !",
+
+  "gender_male_tag": "Homme",
+  "gender_female_tag": "Femme",
+
+  "user_details_gender": "{gender, plural, =1{Homme} =2{Femme} other{Autre}}",
+  "@user_details_gender": {
+    "description": "Passer la valeur du genre pour obtenir le genre de l'utilisateur",
+    "placeholders": {
+      "gender": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+
+  "create_form_screen_title": "Nouveau formulaire",
+  "title_tag": "Titre",
+  "description_tag": "Description",
+  "create_from_limit_to_1_response_text": "Limite à 1 réponse",
+  "question_tag": "Question",
+  "options_tag": "Options",
+  "question_text_field_hint_text": "Entrez la question",
+  "remove_tag": "Supprimer",
+  "type_tag": "Type",
+  "required_tag": "Requis",
+  "create_tag": "Créer",
+  "create_form_success_message": " le formulaire a été créé avec succès",
+  "forms_title": "Formulaires",
+  "responses_tag": "Réponses",
+  "fill_up_tag": "Remplir",
+
+  "form_list_empty_screen_title": "Aucun formulaire",
+  "form_list_empty_screen_message": "Oops, aucun formulaire ici !",
+
+  "org_form_answer_type": "{type, select, 0{Texte} 1{Booléen} 2{Date} 3{Heure} 4{Déroulante} 5{Cases à cocher} 6{Téléchargement de fichier} 7{Aucun} other{Autre}}",
+  "@org_form_answer_type": {
+    "description": "Passer la valeur du type de réponse pour obtenir le type de réponse",
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+
+  "network_connection_error": "Veuillez vérifier votre connexion Internet",
+    "firestore_fetch_data_error_message": "Erreur!",
+  "firebase_auth_error_message": "Erreru d'authentification!",
+  "user_not_found_error_message": "L'utilisateur avec cet e-mail n'existe pas, veuillez demander à votre responsable de l'ajouter",
+  "user_data_not_update_error_message": "Erreur lors de la mise à jour des informations de votre compte, veuillez vérifier que vous avez bien connecté le compte correct",
+  "sign_out_error_message": "Votre tentative de déconnexion a échoué, veuillez réessayer ultérieurement",
+  "error_something_went_wrong": "Quelque chose s'est mal passé",
+  "fill_all_details_error": "Veuillez remplir tous les détails",
+  "fill_require_details_error": "Veuillez remplir les détails requis !",
+  "invalid_date_selection_error": "Veuillez sélectionner une date valide",
+  "apply_leave_minimum_one_hour_error": "Veuillez demander un congé d'au moins une demi-journée",
+  "invalid_mobile_number_error": "Veuillez entrer un numéro de téléphone valide",
+  "add_member_employee_exists_error": "Le membre existe déjà !",
+  "leave_already_applied_error_message": "La demande de congé a déjà été soumise !",
+  "provide_required_information": "Veuillez fournir les informations requises pour continuer",
+
+  "sign_out_alert": "Êtes-vous sûr de vouloir vous déconnecter ?",
+
+  "deactivate_user_account_alert": "Êtes-vous sûr de vouloir désactiver le compte de {username} ? Cette action est irréversible.",
+  "@deactivate_user_account_alert": {
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "remove_user_leave_alert": "Êtes-vous sûr de vouloir annuler ce congé ?",
+
+  "employee_empty_leave_message": "{name} n'a encore pris aucun congé !",
+  "@employee_empty_leave_message": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "sign_out_from_text": "Se déconnecter de {text}",
+  "@sign_out_from_text": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+
+  "employee_details_leaves_title": "Congés de {name}",
+  "@employee_details_leaves_title": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  }
+
+
+}
