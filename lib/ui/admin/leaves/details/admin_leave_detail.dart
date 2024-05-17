@@ -88,9 +88,11 @@ class _AdminLeaveApplicationDetailScreenState
                   LeaveTypeAgoTitleWithStatus(
                       status: widget.leaveApplication.leave.status,
                       appliedOn: widget.leaveApplication.leave.appliedOn,
-                      leaveType: widget.leaveApplication.leave.type),
-                  AdminLeaveRequestDetailsDateContent(
-                      leave: widget.leaveApplication.leave),
+                      leaveType: widget.leaveApplication.leave.type,
+                      child:AdminLeaveRequestDetailsDateContent(
+                      leave: widget.leaveApplication.leave), ),
+                  /*AdminLeaveRequestDetailsDateContent(
+                      leave: widget.leaveApplication.leave),*/
                 ],
               ),
             ),

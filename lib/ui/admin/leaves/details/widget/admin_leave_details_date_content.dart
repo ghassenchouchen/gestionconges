@@ -28,7 +28,7 @@ class AdminLeaveRequestDetailsDateContent extends StatelessWidget {
         Text(
           totalDays,
           style:
-              AppTextStyle.style16.copyWith(color: context.colorScheme.primary),
+              AppTextStyle.style16.copyWith(color: context.colorScheme.textPrimary),
         ),
       ],
     );

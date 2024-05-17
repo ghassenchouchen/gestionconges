@@ -1,7 +1,7 @@
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'package:intl/intl.dart';
-import 'package:pfeconges/data/core/extensions/date_time.dart';
 import 'package:pfeconges/data/model/leave/leave.dart';
+import 'package:pfeconges/data/core/extensions/date_time.dart';
+import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class DateFormatter {
   final AppLocalizations _localization;
@@ -85,7 +85,7 @@ class DateFormatter {
       return _localization.recent_tag;
     }
   }
-
+/*
   String showBirthdays({required DateTime dateTime, required String name}) {
     final today = DateTime.now().dateOnly;
     if (dateTime.dateOnly.isAtSameMomentAs(today)) {
@@ -94,7 +94,7 @@ class DateFormatter {
       return "${_localization.upcoming_birthday_text(name)} ${getDateRepresentation(dateTime).toLowerCase()}!🎂🎁";
     }
   }
-
+*/
   String showAnniversaries(
       {required DateTime dateOfJoining,
       required DateTime upcomingDate,

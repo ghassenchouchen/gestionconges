@@ -82,9 +82,13 @@ class _UserLeaveDetailScreenState extends State<UserLeaveDetailScreen> {
                     child: LeaveTypeAgoTitleWithStatus(
                         appliedOn: state.leave.appliedOn,
                         leaveType: state.leave.type,
-                        status: state.leave.status),
+                        status: state.leave.status,
+                          child: UserLeaveRequestDateContent(leave: state.leave),
+
+                        ),
+                        
                   ),
-                  UserLeaveRequestDateContent(leave: state.leave),
+                 // UserLeaveRequestDateContent(leave: state.leave),
                   PerDayDurationDateRange(
                       perDayDurationWithDate: state.leave.getDateAndDuration()),
                   ValidateWidget(

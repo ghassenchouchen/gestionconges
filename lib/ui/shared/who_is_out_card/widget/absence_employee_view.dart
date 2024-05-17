@@ -114,15 +114,18 @@ class WhoIsOutAbsenceEmptyView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(locale.who_is_out_card_no_leave_present_title,
+          Center(
+         child: Text(locale.who_is_out_card_no_leave_present_title,
               style: AppTextStyle.style20.copyWith(
                   fontWeight: FontWeight.w700,
-                  color: context.colorScheme.textPrimary)),
+                  color: context.colorScheme.textPrimary)),),
           const SizedBox(height: 5),
-          Text(
+          Center(
+          child: Text(
             locale.who_is_out_card_no_leave_present_message,
             style: AppTextStyle.style16
                 .copyWith(color: context.colorScheme.textPrimary),
+          ),
           ),
         ],
       ),
