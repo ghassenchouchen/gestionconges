@@ -6,12 +6,13 @@ class InviteMemberState extends Equatable {
   final String? error;
   final String email;
   final bool emailError;
-
+  final String role;
   const InviteMemberState(
       {this.status = Status.initial,
       this.error,
       this.email = '',
-      this.emailError = false});
+      this.emailError = false,
+      this.role= ''});
 
   InviteMemberState copyWith(
       {Status? status, String? error, String? email, bool? emailError}) {

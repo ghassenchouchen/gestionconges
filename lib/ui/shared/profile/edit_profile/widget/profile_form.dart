@@ -68,15 +68,14 @@ class ProfileForm extends StatelessWidget {
           hintText: localization.admin_home_add_member_level_hint_text,
         ),
         
-        FieldTitle(title: localization.employee_gender_tag),
-        const GenderSelection(),
+      
         FieldTitle(title: localization.employee_mobile_tag),
         BlocBuilder<EmployeeEditProfileBloc, EmployeeEditProfileState>(
             buildWhen: (previous, current) =>
                 previous.numberError != current.numberError,
             builder: (context, state) {
               return FieldEntry(
-                maxLength: 13,
+                maxLength: 8,
                 errorText: state.numberError
                     ? context.l10n.invalid_mobile_number_error
                     : null,
@@ -94,138 +93,4 @@ class ProfileForm extends StatelessWidget {
   }
 }
 
-class GenderSelection extends StatelessWidget {
-  const GenderSelection({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    final localization = AppLocalizations.of(context);
-    final bloc = context.read<EmployeeEditProfileBloc>();
-    return BlocBuilder<EmployeeEditProfileBloc, EmployeeEditProfileState>(
-        buildWhen: (previous, current) => previous.gender != current.gender,
-        builder: (context, state) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              RadioMenuButton<Gender>(
-                value: Gender.male,
-                groupValue: state.gender,
-                onChanged: (Gender? gender) {
-                  bloc.add(EditProfileChangeGenderEvent(gender: Gender.male));
-                },
-                child: Text(
-                  localization.gender_male_tag,
-                  style: AppTextStyle.style16.copyWith(
-                      color: state.gender == Gender.male
-                          ? context.colorScheme.primary
-                          : context.colorScheme.textPrimary),
-                ),
-              ),
-              RadioMenuButton<Gender>(
-                value: Gender.female,
-                groupValue: state.gender,
-                onChanged: (Gender? gender) {
-                  bloc.add(EditProfileChangeGenderEvent(gender: Gender.female));
-                },
-                child: Text(
-                  localization.gender_female_tag,
-                  style: AppTextStyle.style16.copyWith(
-                      color: state.gender == Gender.female
-                          ? context.colorScheme.primary
-                          : context.colorScheme.textPrimary),
-                ),
-              )
-              // Expanded(
-              //     child: ElevatedButton(
-              //   style: ElevatedButton.styleFrom(
-              //       elevation: 0,
-              //       shadowColor: context.colorScheme.containerNormal,
-              //       surfaceTintColor: context.colorScheme.containerNormal,
-              //       foregroundColor: state.gender == Gender.male
-              //           ? context.colorScheme.textPrimary
-              //           : context.colorScheme.textSecondary,
-              //       backgroundColor: context.colorScheme.containerNormal,
-              //       shape: RoundedRectangleBorder(
-              //         borderRadius: AppTheme.commonBorderRadius,
-              //       )),
-              //   onPressed: () {
-              //     bloc.add(EditProfileChangeGenderEvent(gender: Gender.male));
-              //   },
-              //   child: Text(
-              //     localization.gender_male_tag,
-              //     style: AppTextStyle.style16
-              //         .copyWith(color: context.colorScheme.textPrimary),
-              //   ),
-              // )),
-              // const SizedBox(
-              //   width: primaryHorizontalSpacing,
-              // ),
-              // Expanded(
-              //     child: ElevatedButton(
-              //   onPressed: () {
-              //     bloc.add(EditProfileChangeGenderEvent(gender: Gender.female));
-              //   },
-              //   style: ElevatedButton.styleFrom(
-              //     elevation: 0,
-              //     shadowColor: context.colorScheme.containerNormal,
-              //     surfaceTintColor: context.colorScheme.containerNormal,
-              //       foregroundColor: state.gender == Gender.female
-              //           ? context.colorScheme.textPrimary
-              //           : context.colorScheme.textSecondary,
-              //       backgroundColor: context.colorScheme.containerNormal,
-              //       shape: RoundedRectangleBorder(
-              //         borderRadius: AppTheme.commonBorderRadius,
-              //       )),
-              //   child: Text(
-              //     localization.gender_female_tag,
-              //     style: AppTextStyle.style16
-              //         .copyWith(color: context.colorScheme.textPrimary),
-              //   ),
-              // )),
-            ],
-          );
-        });
-  }
-}
-
-class DateOfBirthButton extends StatelessWidget {
-  const DateOfBirthButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final localization = AppLocalizations.of(context);
-    final bloc = context.read<EmployeeEditProfileBloc>();
-    return BlocBuilder<EmployeeEditProfileBloc, EmployeeEditProfileState>(
-      buildWhen: (previous, current) =>
-          previous.dateOfBirth != current.dateOfBirth,
-      builder: (context, state) => ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              elevation: 0,
-              shadowColor: context.colorScheme.containerNormal,
-              surfaceTintColor: context.colorScheme.containerNormal,
-              foregroundColor: context.colorScheme.textSecondary,
-              fixedSize: Size(MediaQuery.of(context).size.width, 50),
-              alignment: Alignment.centerLeft,
-              backgroundColor: context.colorScheme.containerNormal,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              )),
-          onPressed: () async {
-            DateTime? pickedDate = await pickDate(
-                context: context,
-                initialDate: state.dateOfBirth ?? DateTime.now());
-            bloc.add(
-                EditProfileChangeDateOfBirthEvent(dateOfBirth: pickedDate));
-          },
-          child: state.dateOfBirth != null
-              ? Text(localization.date_format_yMMMd(state.dateOfBirth!),
-                  style: AppTextStyle.style16
-                      .copyWith(color: context.colorScheme.textPrimary))
-              : Text(
-                  localization.user_settings_edit_select_tag,
-                  style: AppTextStyle.style16
-                      .copyWith(color: context.colorScheme.textPrimary),
-                )),
-    );
-  }
-}

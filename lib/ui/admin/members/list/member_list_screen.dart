@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pfeconges/data/core/extensions/context_extension.dart';
 import 'package:pfeconges/data/core/extensions/widget_extension.dart';
 import 'package:pfeconges/data/model/invitation/invitation.dart';
+import 'package:pfeconges/style/app_bar.dart';
 import 'package:pfeconges/style/app_page.dart';
 import 'package:pfeconges/style/app_text_style.dart';
 import 'package:pfeconges/ui/admin/members/list/inivitation_card.dart';
@@ -41,6 +42,10 @@ class _MemberListScreenState extends State<MemberListScreen> {
   @override
   Widget build(BuildContext context) {
     return AppPage(
+           appBar:AppBar(
+        iconTheme: IconThemeData(color: AppBarStyles.appBarIconColor),
+        centerTitle: true,
+      ),
       backGroundColor: context.colorScheme.surface,
       title: AppLocalizations.of(context).members_tag,
       actions: [
@@ -49,38 +54,21 @@ class _MemberListScreenState extends State<MemberListScreen> {
             child: Text(
               context.l10n.invite_tag,
               style: AppTextStyle.style16
-                  .copyWith(color: context.colorScheme.primary),
+                  .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
             ))
       ],
       body: BlocConsumer<AdminMembersBloc, AdminMembersState>(
         builder: (BuildContext context, AdminMembersState state) {
-          return state.memberFetchStatus == Status.loading
-              ? const AppCircularProgressIndicator()
-              : CustomScrollView(
-                  slivers: [
-                    MembersTile(
-                      index: 1,
-                      isExpanded: state.expanded.contains(1),
-                      employees: state.activeMembers,
-                      title: context.l10n.members_tag,
-                      invited: false,
-                    ),
-                    MembersTile(
-                      index: 2,
-                      isExpanded: state.expanded.contains(2),
-                      employees: state.invitation,
-                      title: context.l10n.invited_members_title,
-                      invited: true,
-                    ),
-                    MembersTile(
-                      index: 3,
-                      isExpanded: state.expanded.contains(3),
-                      employees: state.inactiveMembers,
-                      title: context.l10n.inactive_members_title,
-                      invited: false,
-                    ),
-                  ],
-                );
+          if (state.memberFetchStatus == Status.loading) {
+            return const AppCircularProgressIndicator();
+          } else {
+            return ListView.builder(
+              itemCount: state.activeMembers.length,
+              itemBuilder: (context, index) {
+                return EmployeeCard(employee: state.activeMembers[index]);
+              },
+            );
+          }
         },
         listener: (BuildContext context, AdminMembersState state) {
           if (state.error != null) {

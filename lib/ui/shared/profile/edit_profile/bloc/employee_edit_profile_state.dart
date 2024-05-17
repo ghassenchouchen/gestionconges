@@ -5,7 +5,6 @@ import '../../../../../data/model/employee/employee.dart';
 
 class EmployeeEditProfileState extends Equatable {
   final Status status;
-  final Gender? gender;
   final DateTime? dateOfBirth;
   final bool nameError;
   final bool numberError;
@@ -13,7 +12,6 @@ class EmployeeEditProfileState extends Equatable {
   final String? imageURL;
 
   const EmployeeEditProfileState({
-    this.gender,
     this.dateOfBirth,
     this.status = Status.initial,
     this.error,
@@ -25,7 +23,6 @@ class EmployeeEditProfileState extends Equatable {
   bool get isDataValid => !nameError && !numberError;
 
   EmployeeEditProfileState copyWith({
-    Gender? gender,
     DateTime? dateOfBirth,
     bool? nameError,
     bool? numberError,
@@ -34,7 +31,6 @@ class EmployeeEditProfileState extends Equatable {
     String? imageURL,
   }) {
     return EmployeeEditProfileState(
-        gender: gender ?? this.gender,
         dateOfBirth: dateOfBirth ?? this.dateOfBirth,
         error: error,
         nameError: nameError ?? this.nameError,
@@ -50,24 +46,13 @@ class EmployeeEditProfileState extends Equatable {
       nameError: nameError,
       numberError: numberError,
       error: error,
-      gender: gender,
       imageURL: imageURL,
     );
   }
 
-  EmployeeEditProfileState changeGender({Gender? gender}) {
-    return EmployeeEditProfileState(
-      status: status,
-      dateOfBirth: dateOfBirth,
-      nameError: nameError,
-      numberError: numberError,
-      error: error,
-      gender: gender,
-      imageURL: imageURL,
-    );
-  }
+
 
   @override
   List<Object?> get props =>
-      [gender, dateOfBirth, status, nameError, numberError, error, imageURL];
+      [ dateOfBirth, status, nameError, numberError, error, imageURL];
 }

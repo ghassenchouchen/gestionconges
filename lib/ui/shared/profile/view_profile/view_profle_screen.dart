@@ -46,7 +46,7 @@ class ViewProfileScreen extends StatelessWidget {
           child: Text(
             localization.edit_tag,
             style: AppTextStyle.style16
-                .copyWith(color: context.colorScheme.primary),
+                .copyWith(color:Colors.white),
           ),
         ),
       ],

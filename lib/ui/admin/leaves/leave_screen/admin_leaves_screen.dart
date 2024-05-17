@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pfeconges/data/core/extensions/context_extension.dart';
 import 'package:pfeconges/data/di/service_locator.dart';
 import 'package:pfeconges/data/provider/user_state.dart';
+import 'package:pfeconges/style/app_bar.dart';
 import 'package:pfeconges/style/app_page.dart';
 import 'package:pfeconges/ui/admin/leaves/leave_screen/bloc/admin_leaves_state.dart';
 import 'package:pfeconges/ui/admin/leaves/leave_screen/widget/admin_leaves_filter.dart';
@@ -82,6 +83,8 @@ class _AdminLeavesScreenState extends State<AdminLeavesScreen> {
     }
 
     return AppPage(
+      appBar:AppBar(iconTheme: IconThemeData(color: AppBarStyles.appBarIconColor),
+        centerTitle: true,),
       backGroundColor: context.colorScheme.surface,
       title: context.l10n.leaves_tag,
       body: Column(

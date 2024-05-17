@@ -51,6 +51,12 @@ dependencies:
   dotenv: ^3.0.0
   firebase_app_check: ^0.2.1+17
   change_app_package_name: ^1.1.0
+  font_awesome_flutter: ^10.7.0
+  cool_alert: ^2.0.1
+  google_fonts: ^4.0.0
+
+
+
 
 
 
@@ -72,7 +78,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/visto-splash.png"
+  image_path: "assets/images/visto-icon.png"
 
 
 

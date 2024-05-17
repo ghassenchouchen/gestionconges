@@ -51,13 +51,13 @@ List<BottomNavigationItem> userTabs = [
   BottomNavigationItem(
     tabIcon: Assets.images.icCalendar,
     tabActiveIcon: Assets.images.calendarFilled,
-    label: "Leaves",
+    label: "Congés",
     initialLocation: Routes.userLeaves,
   ),
   BottomNavigationItem(
     tabIcon: Assets.images.icUsers,
     tabActiveIcon: Assets.images.usersFilled,
-    label: "Members",
+    label: "Membres",
     initialLocation: Routes.userMembers,
   ),
 ];
@@ -72,13 +72,13 @@ List<BottomNavigationItem> adminTabs = [
   BottomNavigationItem(
     tabIcon: Assets.images.icCalendar,
     tabActiveIcon: Assets.images.calendarFilled,
-    label: "Leaves",
+    label: "Congés",
     initialLocation: Routes.adminLeaves,
   ),
   BottomNavigationItem(
     tabIcon: Assets.images.icUsers,
     tabActiveIcon: Assets.images.usersFilled,
-    label: "Members",
+    label: "Membres",
     initialLocation: Routes.adminMembers,
   ),
 ];

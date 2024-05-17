@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+/*import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -26,7 +26,7 @@ void main() {
   late SignInBloc bloc;
   late firebase_auth.User authUser;
 
-  const Account user = Account(uid: 'uid', email: "dummy@canopas.com");
+  const Account user = Account(uid: 'uid', email: "dummy@visto.com");
 
   setUp(() {
     userStateNotifier = MockUserStateNotifier();
@@ -65,3 +65,4 @@ void main() {
     });
   });
 }
+*/

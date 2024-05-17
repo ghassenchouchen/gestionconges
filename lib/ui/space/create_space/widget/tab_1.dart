@@ -34,11 +34,13 @@ class _SpaceBasicDetailsState extends State<SpaceBasicDetails>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          locale.create_space_enter_space_details_text,
-          style: AppTextStyle.style20
-              .copyWith(color: context.colorScheme.textPrimary),
-        ),
+        Center(
+  child: Text( 
+    locale.create_space_enter_space_details_text,
+    style: AppTextStyle.style20
+        .copyWith(color: context.colorScheme.textPrimary),
+  ),
+),
         const SizedBox(
           height: 30,
         ),
@@ -75,7 +77,7 @@ class _SpaceBasicDetailsState extends State<SpaceBasicDetails>
               );
             }),
         const SizedBox(height: 20),
-        BlocBuilder<CreateSpaceBLoc, CreateSpaceState>(
+         BlocBuilder<CreateSpaceBLoc, CreateSpaceState>(
             buildWhen: (previous, current) => previous.domain != current.domain,
             builder: (context, state) {
               return FieldEntry(
@@ -84,11 +86,10 @@ class _SpaceBasicDetailsState extends State<SpaceBasicDetails>
                 errorText: state.domainError
                     ? locale.create_space_invalid_website_url_error
                     : null,
-                onChanged: (String? value) {
-                  bloc.add(CompanyDomainChangeEvent(domain: value));
-                },
+              
               );
             }),
+        
       ],
     );
   }

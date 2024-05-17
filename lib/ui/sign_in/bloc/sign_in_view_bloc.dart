@@ -22,45 +22,38 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     this._accountService,
   ) : super(const SignInState()) {
     on<EmailPasswordSignInEvent>(_signInWithEmailPassword);
-    on<GoogleSignInEvent>(_googleSignIn);
-  }
-  
+    on<SignInTextChangedEvent>(_onSignInTextChanged);
+  }  
 
-  Future<void> _googleSignIn(
-      SignInEvent event, Emitter<SignInState> emit) async {
+  Future<void> _signInWithEmailPassword(
+      EmailPasswordSignInEvent event, Emitter<SignInState> emit) async {
+    emit(state.copyWith(emailPasswordSignInLoading: true, error: ''));
     try {
-      emit(state.copyWith(googleSignInLoading: true));
-      firebase_auth.User? authUser = await _authService.signInWithGoogle();
+      firebase_auth.User? authUser = await _authService.signInWithEmailPassword(
+          event.email, event.password);
       if (authUser != null) {
         final Account user = await _accountService.getUser(authUser);
         await _userStateNotifier.setUser(user);
-        emit(state.copyWith(googleSignInLoading: false, signInSuccess: true));
+        emit(state.copyWith(
+            emailPasswordSignInLoading: false, signInSuccess: true, error: ''));
       } else {
-        emit(state.copyWith(googleSignInLoading: false));
+        emit(state.copyWith(
+            emailPasswordSignInLoading: false,
+            error: 'Authentication failed')); 
       }
-    } on Exception {
+    } on firebase_auth.FirebaseAuthException catch (e) {
       emit(state.copyWith(
-          googleSignInLoading: false, error: firesbaseAuthError));
+          emailPasswordSignInLoading: false, error: e.message ?? 'An unknown error occurred'));
+    } catch (e) {
+      emit(state.copyWith(
+          emailPasswordSignInLoading: false, error: 'An unknown error occurred'));
     }
   }
-  Future<void> _signInWithEmailPassword(
-    EmailPasswordSignInEvent event, Emitter<SignInState> emit) async {
-  try {
-    emit(state.copyWith(emailPasswordSignInLoading: true));
-    firebase_auth.User? authUser = await _authService.signInWithEmailPassword(event.email, event.password);
-    if (authUser != null) {
-      final Account user = await _accountService.getUser(authUser);
-      await _userStateNotifier.setUser(user);
-      emit(state.copyWith(emailPasswordSignInLoading: false, signInSuccess: true));
-    } else {
-      emit(state.copyWith(emailPasswordSignInLoading: false));
+  
+  void _onSignInTextChanged(
+      SignInTextChangedEvent event, Emitter<SignInState> emit) async {
+    if (state.error != null) {
+      emit(state.copyWith(error: ''));
     }
-  } on Exception {
-    emit(state.copyWith(
-        emailPasswordSignInLoading: false, error: firesbaseAuthError));
   }
-}
-
-
- 
 }

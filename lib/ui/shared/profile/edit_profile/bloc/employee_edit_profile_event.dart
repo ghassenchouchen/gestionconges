@@ -5,14 +5,13 @@ import '../../../../../data/model/employee/employee.dart';
 abstract class EditProfileEvent extends Equatable {}
 
 class EditProfileInitialLoadEvent extends EditProfileEvent {
-  final Gender? gender;
   final DateTime? dateOfBirth;
 
   EditProfileInitialLoadEvent(
-      {required this.gender, required this.dateOfBirth});
+      { required this.dateOfBirth});
 
   @override
-  List<Object?> get props => [gender, dateOfBirth];
+  List<Object?> get props => [ dateOfBirth];
 }
 
 class EditProfileNameChangedEvent extends EditProfileEvent {
@@ -42,16 +41,7 @@ class EditProfileChangeDateOfBirthEvent extends EditProfileEvent {
   List<Object?> get props => [dateOfBirth];
 }
 
-class EditProfileChangeGenderEvent extends EditProfileEvent {
-  final Gender? gender;
 
-  EditProfileChangeGenderEvent({
-    required this.gender,
-  });
-
-  @override
-  List<Object?> get props => [gender];
-}
 
 class ChangeImageEvent extends EditProfileEvent {
   final String imagePath;

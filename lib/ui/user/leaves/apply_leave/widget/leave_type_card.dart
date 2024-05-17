@@ -7,6 +7,7 @@ import '../bloc/apply_leave_bloc.dart';
 import '../bloc/apply_leave_event.dart';
 import '../bloc/apply_leave_state.dart';
 
+
 class LeaveTypeCard extends StatelessWidget {
   const LeaveTypeCard({
     super.key,
@@ -25,7 +26,7 @@ class LeaveTypeCard extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
                 context.l10n.user_leaves_apply_leave_type_tag,
-                style: AppTextStyle.style14
+                style: AppTextStyle.style18
                     .copyWith(color: context.colorScheme.textSecondary),
               ),
             ),
@@ -63,3 +64,4 @@ class LeaveTypeCard extends StatelessWidget {
     );
   }
 }
+

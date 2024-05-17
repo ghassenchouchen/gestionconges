@@ -25,7 +25,7 @@ class EmployeeEditProfilePage extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<EmployeeEditProfileBloc>()
         ..add(EditProfileInitialLoadEvent(
-            dateOfBirth: employee.dateOfBirth, gender: employee.gender)),
+            dateOfBirth: employee.dateOfBirth)),
       child: EmployeeEditProfileScreen(employee: employee),
     );
   }
@@ -46,7 +46,6 @@ class _EmployeeEditProfileScreenState extends State<EmployeeEditProfileScreen> {
   TextEditingController designationController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController addressController = TextEditingController();
-  TextEditingController bloodGroupController = TextEditingController();
   TextEditingController levelController = TextEditingController();
 
   @override
@@ -103,7 +102,7 @@ class _EmployeeEditProfileScreenState extends State<EmployeeEditProfileScreen> {
                       : Text(
                           AppLocalizations.of(context).save_tag,
                           style: AppTextStyle.style16
-                              .copyWith(color: context.colorScheme.primary),
+                              .copyWith(color: Colors.white),
                         )),
         )
       ],

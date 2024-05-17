@@ -8,7 +8,7 @@ void main() {
       expect(
           Account.fromJson(const <String, dynamic>{
             'uid': "unique-user-id",
-            'email': "dummy@canopas.com",
+            'email': "dummy@vusti.com",
             'name': "dummy",
             'spaces': ["space-id"],
           }),
@@ -16,7 +16,7 @@ void main() {
               .having(
                   (user) => user.uid, 'unique user auth id', "unique-user-id")
               .having(
-                  (user) => user.email, 'user auth email', "dummy@canopas.com")
+                  (user) => user.email, 'user auth email', "dummy@visto.com")
               .having((user) => user.name, 'unique user auth name', "dummy")
               .having(
                   (user) => user.spaces, 'user spaces id list', ["space-id"]));
@@ -25,13 +25,13 @@ void main() {
     test('apply correct employee to fire-store', () {
       const Account user = Account(
         uid: "unique-user-id",
-        email: "dummy@canopas.com",
+        email: "dummy@visto.com",
         name: "dummy",
         spaces: ["space-id"],
       );
       const Map<String, dynamic> map = <String, dynamic>{
         'uid': "unique-user-id",
-        'email': "dummy@canopas.com",
+        'email': "dummy@visto.com",
         'name': "dummy",
         'spaces': ["space-id"],
       };

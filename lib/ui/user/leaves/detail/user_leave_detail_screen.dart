@@ -100,11 +100,7 @@ class _UserLeaveDetailScreenState extends State<UserLeaveDetailScreen> {
                       ),
                     ),
                   ),
-                  ValidateWidget(
-                      isValid: state.leave.response.isNotNullOrEmpty &&
-                          userIsAbleToSeeAllData,
-                      child: ResponseNote(
-                          leaveResponse: state.leave.response ?? "")),
+              
                 ],
               );
             }

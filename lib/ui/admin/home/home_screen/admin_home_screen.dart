@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:pfeconges/data/core/extensions/context_extension.dart';
 import 'package:pfeconges/data/core/utils/bloc_status.dart';
+import 'package:pfeconges/style/app_bar.dart';
 import 'package:pfeconges/style/app_page.dart';
 import 'package:pfeconges/ui/admin/home/home_screen/widget/request_list.dart';
 import 'package:pfeconges/ui/shared/events/bloc/celebrations_bloc.dart';
@@ -59,6 +60,10 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context);
     return AppPage(
+      appBar: AppBar(
+      iconTheme: IconThemeData(color: AppBarStyles.appBarIconColor),
+
+      ),
       backGroundColor: context.colorScheme.surface,
       leading: InkWell(
           onTap: () {
@@ -67,7 +72,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
           },
           child: Icon(
             Icons.menu,
-            color: context.colorScheme.textPrimary,
+            color: AppBarStyles.appBarIconColor,
           )),
       titleWidget: SpaceNotifierWidget(
         notifier: getIt.get<UserStateNotifier>(),
@@ -75,6 +80,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
           builder: (context) {
             final String name = SpaceNotifierWidget.of(context)?.name ?? "";
             return Text(name,
+            
                 style: AppTextStyle.headerStyle(context),
                 overflow: TextOverflow.ellipsis);
           },
@@ -83,7 +89,6 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
       body: ListView(
         children: [
           const WhoIsOutCard(),
-          const EventCard(),
           const SizedBox(
             height: 20,
           ),

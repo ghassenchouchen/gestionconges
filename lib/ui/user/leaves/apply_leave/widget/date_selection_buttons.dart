@@ -7,7 +7,6 @@ import '../../../../widget/date_time_picker.dart';
 import '../bloc/apply_leave_bloc.dart';
 import '../bloc/apply_leave_event.dart';
 import '../bloc/apply_leave_state.dart';
-
 class LeaveRequestDateSelection extends StatelessWidget {
   const LeaveRequestDateSelection({super.key});
 
@@ -17,6 +16,7 @@ class LeaveRequestDateSelection extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: primaryHalfSpacing),
       child: Row(
+        
         children: [
           BlocBuilder<ApplyLeaveBloc, ApplyLeaveState>(
             buildWhen: (previous, current) =>

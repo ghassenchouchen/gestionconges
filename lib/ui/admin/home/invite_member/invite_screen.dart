@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pfeconges/data/core/extensions/context_extension.dart';
 import 'package:pfeconges/data/core/extensions/string_extension.dart';
 import 'package:pfeconges/data/di/service_locator.dart';
+import 'package:pfeconges/style/app_bar.dart';
 import 'package:pfeconges/style/other/app_button.dart';
 import 'package:pfeconges/ui/widget/circular_progress_indicator.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -39,8 +40,12 @@ class _SearchMemberScreenState extends State<SearchMemberScreen> {
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context);
     return AppPage(
+      appBar:AppBar( backgroundColor: AppBarStyles.appBarBackgroundColor,
+      iconTheme: IconThemeData(color: AppBarStyles.appBarIconColor),
+        centerTitle: true,),
+        
       backGroundColor: context.colorScheme.surface,
-      title: locale.admin_home_invite_member_appbar_tag,
+      titleWidget: Text(locale.admin_home_invite_member_appbar_tag,style: AppBarStyles.appBarTextStyle),
       body: BlocConsumer<InviteMemberBloc, InviteMemberState>(
         listenWhen: (previous, current) =>
             current.status == Status.success || current.error.isNotNullOrEmpty,

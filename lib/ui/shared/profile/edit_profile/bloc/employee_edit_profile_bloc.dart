@@ -28,14 +28,13 @@ class EmployeeEditProfileBloc
     on<EditProfileNameChangedEvent>(_validName);
     on<EditProfileNumberChangedEvent>(_validNumber);
     on<EditProfileChangeDateOfBirthEvent>(_changeDateOfBirth);
-    on<EditProfileChangeGenderEvent>(_changeGender);
     on<EditProfileUpdateProfileEvent>(_updateEmployeeDetails);
     on<ChangeImageEvent>(_changeImage);
   }
 
   void _init(EditProfileInitialLoadEvent event,
       Emitter<EmployeeEditProfileState> emit) {
-    emit(state.copyWith(gender: event.gender, dateOfBirth: event.dateOfBirth));
+    emit(state.copyWith( dateOfBirth: event.dateOfBirth));
   }
 
   Future<void> _changeImage(
@@ -66,10 +65,7 @@ class EmployeeEditProfileBloc
     emit(state.changeDateOfBirth(dateOfBirth: event.dateOfBirth));
   }
 
-  void _changeGender(EditProfileChangeGenderEvent event,
-      Emitter<EmployeeEditProfileState> emit) {
-    emit(state.changeGender(gender: event.gender));
-  }
+
 
   void _updateEmployeeDetails(EditProfileUpdateProfileEvent event,
       Emitter<EmployeeEditProfileState> emit) async {
@@ -89,7 +85,6 @@ class EmployeeEditProfileBloc
           level: event.level.isEmpty ? null : event.level,
           address: event.address.isEmpty ? null : event.address,
           imageUrl: uri ?? _userManager.employee.imageUrl,
-          gender: state.gender,
           dateOfBirth: state.dateOfBirth,
           phone: event.phoneNumber.isEmpty ? null : event.phoneNumber,
           dateOfJoining: _userManager.employee.dateOfJoining,

@@ -54,7 +54,7 @@ Color leaveStatusColor(LeaveStatus leaveStatus, BuildContext context) {
   if (leaveStatus == LeaveStatus.approved) {
     return context.colorScheme.approveColor;
   } else if (leaveStatus == LeaveStatus.pending) {
-    return context.colorScheme.textSecondary;
+    return Color.fromRGBO(250, 192, 94, 1);
   }
   return context.colorScheme.rejectColor;
 }

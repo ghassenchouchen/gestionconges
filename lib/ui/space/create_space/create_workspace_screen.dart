@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pfeconges/data/core/extensions/context_extension.dart';
+import 'package:pfeconges/style/app_bar.dart';
 import 'package:pfeconges/style/app_page.dart';
 import 'package:pfeconges/style/app_text_style.dart';
 import 'package:pfeconges/style/other/app_button.dart';
@@ -58,8 +59,15 @@ class _CreateWorkSpaceScreenState extends State<CreateWorkSpaceScreen>
     final bloc = BlocProvider.of<CreateSpaceBLoc>(context);
     final locale = context.l10n;
     return AppPage(
+      appBar:
+         AppBar(
+            backgroundColor: AppBarStyles.appBarBackgroundColor,
+        iconTheme: IconThemeData(color: AppBarStyles.appBarIconColor),
+        centerTitle: true,
+
+      ),
         backGroundColor: context.colorScheme.surface,
-        title: locale.create_new_space_title,
+        titleWidget:  Text(locale.create_new_space_title,style: AppBarStyles.appBarTextStyle),
         body: Material(
           color: context.colorScheme.surface,
           child: Padding(
@@ -89,7 +97,7 @@ class _CreateWorkSpaceScreenState extends State<CreateWorkSpaceScreen>
                       PersonalInfo(),
                     ],
                   ),
-                ),
+                ),  
               ],
             ),
           ),

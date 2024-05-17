@@ -16,9 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SignInState {
-  dynamic get appleSignInAvailable => throw _privateConstructorUsedError;
-  dynamic get googleSignInLoading => throw _privateConstructorUsedError;
-  dynamic get appleSignInLoading => throw _privateConstructorUsedError;
   dynamic get signInSuccess => throw _privateConstructorUsedError;
   dynamic get emailPasswordSignInLoading =>
       throw _privateConstructorUsedError; // Add this line
@@ -36,10 +33,7 @@ abstract class $SignInStateCopyWith<$Res> {
       _$SignInStateCopyWithImpl<$Res, SignInState>;
   @useResult
   $Res call(
-      {dynamic appleSignInAvailable,
-      dynamic googleSignInLoading,
-      dynamic appleSignInLoading,
-      dynamic signInSuccess,
+      {dynamic signInSuccess,
       dynamic emailPasswordSignInLoading,
       String? error});
 }
@@ -57,26 +51,11 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? appleSignInAvailable = freezed,
-    Object? googleSignInLoading = freezed,
-    Object? appleSignInLoading = freezed,
     Object? signInSuccess = freezed,
     Object? emailPasswordSignInLoading = freezed,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
-      appleSignInAvailable: freezed == appleSignInAvailable
-          ? _value.appleSignInAvailable
-          : appleSignInAvailable // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      googleSignInLoading: freezed == googleSignInLoading
-          ? _value.googleSignInLoading
-          : googleSignInLoading // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      appleSignInLoading: freezed == appleSignInLoading
-          ? _value.appleSignInLoading
-          : appleSignInLoading // ignore: cast_nullable_to_non_nullable
-              as dynamic,
       signInSuccess: freezed == signInSuccess
           ? _value.signInSuccess
           : signInSuccess // ignore: cast_nullable_to_non_nullable
@@ -102,10 +81,7 @@ abstract class _$$SignInStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {dynamic appleSignInAvailable,
-      dynamic googleSignInLoading,
-      dynamic appleSignInLoading,
-      dynamic signInSuccess,
+      {dynamic signInSuccess,
       dynamic emailPasswordSignInLoading,
       String? error});
 }
@@ -121,23 +97,11 @@ class __$$SignInStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? appleSignInAvailable = freezed,
-    Object? googleSignInLoading = freezed,
-    Object? appleSignInLoading = freezed,
     Object? signInSuccess = freezed,
     Object? emailPasswordSignInLoading = freezed,
     Object? error = freezed,
   }) {
     return _then(_$SignInStateImpl(
-      appleSignInAvailable: freezed == appleSignInAvailable
-          ? _value.appleSignInAvailable!
-          : appleSignInAvailable,
-      googleSignInLoading: freezed == googleSignInLoading
-          ? _value.googleSignInLoading!
-          : googleSignInLoading,
-      appleSignInLoading: freezed == appleSignInLoading
-          ? _value.appleSignInLoading!
-          : appleSignInLoading,
       signInSuccess:
           freezed == signInSuccess ? _value.signInSuccess! : signInSuccess,
       emailPasswordSignInLoading: freezed == emailPasswordSignInLoading
@@ -155,22 +119,10 @@ class __$$SignInStateImplCopyWithImpl<$Res>
 
 class _$SignInStateImpl implements _SignInState {
   const _$SignInStateImpl(
-      {this.appleSignInAvailable = false,
-      this.googleSignInLoading = false,
-      this.appleSignInLoading = false,
-      this.signInSuccess = false,
+      {this.signInSuccess = false,
       this.emailPasswordSignInLoading = false,
       this.error});
 
-  @override
-  @JsonKey()
-  final dynamic appleSignInAvailable;
-  @override
-  @JsonKey()
-  final dynamic googleSignInLoading;
-  @override
-  @JsonKey()
-  final dynamic appleSignInLoading;
   @override
   @JsonKey()
   final dynamic signInSuccess;
@@ -183,7 +135,7 @@ class _$SignInStateImpl implements _SignInState {
 
   @override
   String toString() {
-    return 'SignInState(appleSignInAvailable: $appleSignInAvailable, googleSignInLoading: $googleSignInLoading, appleSignInLoading: $appleSignInLoading, signInSuccess: $signInSuccess, emailPasswordSignInLoading: $emailPasswordSignInLoading, error: $error)';
+    return 'SignInState(signInSuccess: $signInSuccess, emailPasswordSignInLoading: $emailPasswordSignInLoading, error: $error)';
   }
 
   @override
@@ -191,12 +143,6 @@ class _$SignInStateImpl implements _SignInState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SignInStateImpl &&
-            const DeepCollectionEquality()
-                .equals(other.appleSignInAvailable, appleSignInAvailable) &&
-            const DeepCollectionEquality()
-                .equals(other.googleSignInLoading, googleSignInLoading) &&
-            const DeepCollectionEquality()
-                .equals(other.appleSignInLoading, appleSignInLoading) &&
             const DeepCollectionEquality()
                 .equals(other.signInSuccess, signInSuccess) &&
             const DeepCollectionEquality().equals(
@@ -207,9 +153,6 @@ class _$SignInStateImpl implements _SignInState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(appleSignInAvailable),
-      const DeepCollectionEquality().hash(googleSignInLoading),
-      const DeepCollectionEquality().hash(appleSignInLoading),
       const DeepCollectionEquality().hash(signInSuccess),
       const DeepCollectionEquality().hash(emailPasswordSignInLoading),
       error);
@@ -223,19 +166,10 @@ class _$SignInStateImpl implements _SignInState {
 
 abstract class _SignInState implements SignInState {
   const factory _SignInState(
-      {final dynamic appleSignInAvailable,
-      final dynamic googleSignInLoading,
-      final dynamic appleSignInLoading,
-      final dynamic signInSuccess,
+      {final dynamic signInSuccess,
       final dynamic emailPasswordSignInLoading,
       final String? error}) = _$SignInStateImpl;
 
-  @override
-  dynamic get appleSignInAvailable;
-  @override
-  dynamic get googleSignInLoading;
-  @override
-  dynamic get appleSignInLoading;
   @override
   dynamic get signInSuccess;
   @override

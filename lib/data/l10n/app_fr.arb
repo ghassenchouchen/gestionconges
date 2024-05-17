@@ -8,7 +8,7 @@
   
   "settings_tag": "Paramètres",
   "members_tag": "Membres",
-  "leaves_tag": "Congés",
+  "leaves_tag": "Historique des congés",
 
   "recent_tag": "Récent",
   "past_tag": "Passé",
@@ -37,12 +37,12 @@
   
 "spaces_title": "Département",
   "delete_space_text": "Suppimer département",
-  "delete_dialog_description_text": "Are you sure you want to permanently delete space?",
+  "delete_dialog_description_text": "Supprimer ce département?",
   "change_space_tag": "Modifier Département",
   "company_name_tag": "Visto Consulting",
-  "create_space_Website_url_label": "Website URL (Optional)",
-  "create_new_space_title": "Ajouter un nouveau département",
-  "create_own_space_title": "Ajouter votre département",
+  "create_space_Website_url_label": "Nombre de membres",
+  "create_new_space_title": "Ajouter département",
+  "create_own_space_title": "Ajouter département",
   "welcome_to_unity_text": "Welcome",
   "spaces_list_title": "Départements pour  {email}",
   "@spaces_list_title": {
@@ -56,23 +56,23 @@
   "edit_space_button_tag": "Modifier Département",
   "view_profile_button_tag": "Consulter Profile",
 
-  "empty_space_list_msg": "Looks like you haven't been added to any organizations yet. Please contact your administrator to get started.",
+  "empty_space_list_msg": "Il semble que vous n'avez pas été ajouté à un département. Prière de contacter votre responsable.",
 
   "create_space_tag": "Ajouter Département",
-  "create_space_tab_1_tag": "Département Details",
-  "create_space_tab_2_tag": "Département Réglage",
-  "create_space_tab_3_tag": "Personal Details",
-  "create_space_enter_space_details_text": "Entrez vos détails",
-  "create_space_set_up_your_space_text": "Définir votre département",
-  "create_space_enter_your_details_text": "Entrez vos détails",
+  "create_space_tab_1_tag": "Détails",
+  "create_space_tab_2_tag": "Règles",
+  "create_space_tab_3_tag": "Détails personnelles",
+  "create_space_enter_space_details_text": "Entrez les détails",
+  "create_space_set_up_your_space_text": "Définir le solde maximum de congés",
+  "create_space_enter_your_details_text": "Entrez les détails",
   "create_space_enter_your_name_hint_text": "Votre nom",
   "create_space_invalid_time_off_error": "Entrez une date valide",
   "create_space_invalid_name_error": "Entrez un nom valide",
-  "create_space_invalid_website_url_error": "Please enter valid website url",
+  "create_space_invalid_website_url_error": "Entrez le nombre de membres",
 
   "empty_change_space_title": "Pas de départements",
   "empty_change_space_description": "Vous n'avez pas un autre département",
-  "company_name_tag": "Nom de l'entreprise",
+  "company_name_tag": "Nom du département",
 
   "welcome_to_LeaveFlow_text": "Bienvenue sur LeaveFlow",
 
@@ -90,7 +90,7 @@
 
   "page_not_found_error_code": "404",
   "page_not_found_error_title": "Page non trouvée !",
-  "page_not_found_error_message": "Il semble que nous ne puissions pas trouver la page que vous recherchez !",
+  "page_not_found_error_message": "Il semble que nous ne puissions pas trouver la page que vous cherchez !",
 
   "leave_type_placeholder_text": "{leaveType, select, 0{Congé annuel} 1{Congé maladie} other{Autre}}",
   "@leave_type_placeholder_text": {
@@ -224,16 +224,16 @@
     }
   },
 
-  "who_is_out_card_no_leave_present_title": "Tous sont présents",
-  "who_is_out_card_no_leave_present_message": "Tous sont présents",
+  "who_is_out_card_no_leave_present_title": "Tout le monde est présent",
+  "who_is_out_card_no_leave_present_message": "Bon travail!",
 
   "who_is_out_card_see_all_button_tag": "Voir tout",
-  "who_is_out_card_title": "Qui est hors du bureau ?",
+  "who_is_out_card_title": "Qui est en congé?",
 
   "state_controller_access_revoked_alert_dialogue_title": "Accès révoqué",
     "state_controller_access_revoked_alert_dialogue_subtitle":"Vous n'avez pas d'accès",
 
-  "empty_request_message": "Empty request",
+  "empty_request_message": "",
   "empty_request_title": "Aucune demande de congé en attente",
 
   "admin_home_absence_tag": "Absence",
@@ -316,7 +316,7 @@
   "inactive_members_title": "Membres inactifs",
 
   "admin_setting_update_leave_total_leaves_tag": "Congés totaux",
-  "yearly_paid_time_off_tag": "Congé payé annuel",
+  "yearly_paid_time_off_tag": "Congé annuel",
   "hr_leave_record_tag": "Historique des congés",
 
   "leave_notification_email_tag": "E-mail de notification de congé",
@@ -355,7 +355,7 @@
   "employee_address_tag": "Adresse",
   "employee_gender_tag": "Genre",
   "employee_dateOfBirth_tag": "Date de naissance",
-  "employee_dateOfJoin_tag": "Date d'adhésion",
+  "employee_dateOfJoin_tag": "Date d'ajout",
   "employee_level_tag": "Niveau",
   "employee_employeeID_tag": "ID Employé",
   "employee_name_tag": "Nom",
@@ -411,7 +411,7 @@
 
   "network_connection_error": "Veuillez vérifier votre connexion Internet",
     "firestore_fetch_data_error_message": "Erreur!",
-  "firebase_auth_error_message": "Erreru d'authentification!",
+  "firebase_auth_error_message": "Errer d'authentification!",
   "user_not_found_error_message": "L'utilisateur avec cet e-mail n'existe pas, veuillez demander à votre responsable de l'ajouter",
   "user_data_not_update_error_message": "Erreur lors de la mise à jour des informations de votre compte, veuillez vérifier que vous avez bien connecté le compte correct",
   "sign_out_error_message": "Votre tentative de déconnexion a échoué, veuillez réessayer ultérieurement",

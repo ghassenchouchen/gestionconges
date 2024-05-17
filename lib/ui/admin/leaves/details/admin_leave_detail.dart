@@ -117,13 +117,7 @@ class _AdminLeaveApplicationDetailScreenState
                       title: localization.admin_leave_detail_note_tag,
                     ),
                   ),
-                  ValidateWidget(
-                      isValid: !(getIt<UserStateNotifier>().isHR &&
-                              widget.leaveApplication.employee.role ==
-                                  Role.hr) &&
-                          widget.leaveApplication.leave.status ==
-                              LeaveStatus.pending,
-                      child: const ApproveRejectionMessage()),
+                 
                 ],
               ),
             ),

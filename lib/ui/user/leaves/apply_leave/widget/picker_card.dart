@@ -6,7 +6,6 @@ import 'package:pfeconges/data/configs/space_constant.dart';
 import 'package:pfeconges/data/core/extensions/context_extension.dart';
 import 'package:pfeconges/gen/assets.gen.dart';
 import 'package:pfeconges/style/app_text_style.dart';
-
 class DatePickerCard extends StatelessWidget {
   final Function() onPress;
   final String title;
@@ -27,7 +26,7 @@ class DatePickerCard extends StatelessWidget {
       margin: const EdgeInsets.all(primaryHalfSpacing),
       decoration: BoxDecoration(
           border: Border(
-              bottom: BorderSide(color: context.colorScheme.containerHigh))),
+              bottom: BorderSide(color: context.colorScheme.primary))),
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
         onTap: onPress,
@@ -37,9 +36,8 @@ class DatePickerCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               SvgPicture.asset(
-                Assets.images.icCalendar,
-                colorFilter: ColorFilter.mode(
-                    context.colorScheme.textSecondary, BlendMode.srcIn),
+                Assets.images.calendar,
+                
               ),
               const SizedBox(
                 width: 10,
@@ -49,7 +47,7 @@ class DatePickerCard extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: AppTextStyle.style14
+                    style: AppTextStyle.style16
                         .copyWith(color: context.colorScheme.textSecondary),
                   ),
                   const SizedBox(

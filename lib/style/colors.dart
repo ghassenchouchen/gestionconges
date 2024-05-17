@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pfeconges/style/app_text_style.dart';
 
-const Color primaryColor = Color(0xff5966EA);
+const Color primaryColor = Color.fromRGBO(89, 102, 234, 1);
 
 const Color secondaryLightColor = Color(0xff3B3561);
 const Color tertiaryLightColor = Color(0xffFAC05E);
@@ -49,7 +49,7 @@ final ThemeData materialThemeDataLight = _materialLightTheme.copyWith(
       surface: surfaceLightColor,
       onSurface: textPrimaryColor),
   appBarTheme: _materialLightTheme.appBarTheme.copyWith(
-      backgroundColor: surfaceLightColor,
+      backgroundColor: Color.fromRGBO(89, 102, 234, 1),
       titleTextStyle: AppTextStyle.style20,
       foregroundColor: textPrimaryColor,
       centerTitle: true),

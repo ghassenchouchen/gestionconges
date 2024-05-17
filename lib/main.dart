@@ -6,6 +6,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart' show kDebugMode, kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pfeconges/data/core/extensions/context_extension.dart';
@@ -24,6 +25,7 @@ Future<void> main() async {
       
 
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await configureDependencies();
 
@@ -52,9 +54,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+       SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Color(0xFF5966EA), // top bar color
+      statusBarIconBrightness: Brightness.light, // top bar icons
+      systemNavigationBarColor: Colors.white, // bottom bar color
+      systemNavigationBarIconBrightness: Brightness.dark, // bottom bar icons
+    ));
     final isDarkMode = context.brightness == Brightness.dark;
     final colorScheme = isDarkMode ? appColorSchemeDark : appColorSchemeLight;
     return AppThemeWidget(
+      
       colorScheme: colorScheme,
       child: GestureDetector(
           onTap: () {

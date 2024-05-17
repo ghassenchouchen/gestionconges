@@ -59,6 +59,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context);
     return AppPage(
+      appBar: AppBar(),
         backGroundColor: context.colorScheme.surface,
         leading: InkWell(
             onTap: () {
@@ -67,13 +68,13 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
             },
             child: Icon(
               Icons.menu,
-              color: context.colorScheme.textPrimary,
+              color: Colors.white,
             )),
         titleWidget: SpaceNotifierWidget(
           notifier: getIt.get<UserStateNotifier>(),
           child: Builder(
             builder: (context) {
-              final String name = SpaceNotifierWidget.of(context)?.name ?? "";
+              final String name =  "Home";
               return Text(name,
                   style: AppTextStyle.headerStyle(context),
                   overflow: TextOverflow.ellipsis);
@@ -83,7 +84,6 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
         body: ListView(
           children: [
             const WhoIsOutCard(),
-            const EventCard(),
             BlocConsumer<UserHomeBloc, UserHomeState>(
                 buildWhen: (previous, current) =>
                     current is! UserHomeErrorState,

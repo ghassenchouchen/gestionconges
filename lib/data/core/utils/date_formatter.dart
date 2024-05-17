@@ -14,7 +14,7 @@ class DateFormatter {
 
   String getDateRepresentation(DateTime dt) {
     if (today.dateOnly.isAtSameMomentAs(dt.dateOnly)) {
-      return _localization.dateFormatter_today;
+      return "Aujourd'hui";
     } else if (today.subtract(oneDay).dateOnly.isAtSameMomentAs(dt.dateOnly)) {
       return _localization.dateFormatter_yesterday;
     } else if (today.add(oneDay).dateOnly.isAtSameMomentAs(dt.dateOnly)) {

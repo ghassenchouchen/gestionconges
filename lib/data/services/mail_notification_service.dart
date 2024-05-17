@@ -21,7 +21,7 @@ class NotificationService {
     _httpClient.close();
   }
 
-  Future<void> notifyHRForNewLeave(
+  Future<void> notifyManagerForNewLeave(
       {required String name,
       required String reason,
       required DateTime startDate,
@@ -65,7 +65,7 @@ class NotificationService {
                 "receiver": receiver,
               }));
       if (response.statusCode == 200) {
-        log('Leave request update notification mail send successfully',
+        log('Demande de congé mise à jour',
             name: 'Notification');
       }
     } on Exception catch (e) {
@@ -84,14 +84,15 @@ class NotificationService {
   }
 
   Future<void> sendInviteNotification(
-      {required String companyName, required String receiver}) async {
+      {required String departmentName, required String receiver, required String role,}) async {
     try {
       http.Response response =
           await _httpClient.post(Uri.https(baseURL, '/api/invitation'),
               body: json.encode({
                 "receiver": receiver,
-                "companyname": companyName,
-                "spacelink": "https://unity.canopas.com/home",
+                "companyname": departmentName,
+                "spacelink": "",
+                "role":role,
               }));
       if (response.statusCode == 200) {
         log('Invite notification mail send successfully', name: 'Notification');

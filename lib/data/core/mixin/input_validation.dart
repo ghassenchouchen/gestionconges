@@ -12,7 +12,7 @@
         email.contains('.');
 
     bool validPhoneNumber(String? number) {
-      String pattern = r'(^(?:[+0]9)?[0-9]{10}$)';
+      String pattern = r'(^(?:[+0]9)?[0-9]{8}$)';
       RegExp regExp = RegExp(pattern);
       return number != null && regExp.hasMatch(number);
     }

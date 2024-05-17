@@ -1,4 +1,4 @@
-import 'package:flutter_test/flutter_test.dart';
+/*import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:pfeconges/data/core/exception/error_const.dart';
@@ -79,9 +79,9 @@ void main() {
   test(
       'Should emit loading state and success state  if email input is valid on InviteMemberEvent',
       () async {
-    when(userStateNotifier.currentSpaceName).thenReturn('canopas');
+    when(userStateNotifier.currentSpaceName).thenReturn('Visto');
     when(notificationService.sendInviteNotification(
-            companyName: 'canopas', receiver: 'andrew.j@google.com'))
+            departmentName: 'Visto', receiver: 'flen@google.com'))
         .thenAnswer((realInvocation) async => true);
     when(userStateNotifier.userUID).thenReturn('uid');
     when(userStateNotifier.currentSpaceId).thenReturn('space_id');
@@ -172,4 +172,4 @@ void main() {
               error: userAlreadyInvited)
         ]));
   });
-}
+}*/

@@ -48,11 +48,7 @@ class AdminLeaveDetailsActionButton extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         height: 65,
         width: MediaQuery.of(context).size.width * 0.75,
-        decoration: BoxDecoration(
-          color: context.colorScheme.surface,
-          borderRadius: BorderRadius.circular(50),
-          boxShadow: AppTheme.commonBoxShadow(context),
-        ),
+       
         child: BlocBuilder<AdminLeaveDetailsBloc, AdminLeaveDetailsState>(
           buildWhen: (previous, current) =>
               previous.actionStatus != current.actionStatus,
@@ -82,7 +78,7 @@ class AdminLeaveDetailsActionButton extends StatelessWidget {
                       child: Text(
                           context.l10n.admin_leave_detail_reject_button_tag,
                           style: AppTextStyle.style16.copyWith(
-                              color: context.colorScheme.textPrimary)),
+                              color: Colors.white)),
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -103,7 +99,7 @@ class AdminLeaveDetailsActionButton extends StatelessWidget {
                       child: Text(
                           context.l10n.admin_leave_detail_approve_button_tag,
                           style: AppTextStyle.style16.copyWith(
-                              color: context.colorScheme.textPrimary)),
+                              color: Colors.white)),
                     ),
                   ],
                 ),

@@ -123,7 +123,7 @@ class ApplyLeaveBloc extends Bloc<ApplyLeaveEvent, ApplyLeaveState>
           final notificationEmail =
               _userStateNotifier.currentSpace!.notificationEmail;
           if (notificationEmail != null) {
-            await _notificationService.notifyHRForNewLeave(
+            await _notificationService.notifyManagerForNewLeave(
               name: _userStateNotifier.employee.name,
               startDate: leaveData.startDate,
               endDate: leaveData.endDate,
@@ -156,16 +156,16 @@ class ApplyLeaveBloc extends Bloc<ApplyLeaveEvent, ApplyLeaveState>
           (key, value) => key.isBefore(firstDate) || key.isAfter(lastDate));
 
     final DateTime appliedOn = DateTime.now();
-
+/*
     final bool isUrgentLeave = _appFunctions.isUrgentLeave(
         startDate: firstDate,
         appliedOn: appliedOn,
-        totalLeaves: state.totalLeaveDays);
+        totalLeaves: state.totalLeaveDays);*/
 
     return Leave(
       leaveId: _leaveRepo.generateLeaveId,
       uid: _userStateNotifier.employeeId,
-      type: isUrgentLeave ? LeaveType.urgentLeave : state.leaveType,
+      type:state.leaveType, //isUrgentLeave ? LeaveType.urgentLeave : state.leaveType,
       startDate: firstDate,
       endDate: lastDate,
       total: state.totalLeaveDays,

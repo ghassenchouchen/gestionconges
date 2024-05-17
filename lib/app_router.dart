@@ -63,8 +63,9 @@ class AppRouter {
             path: Routes.login,
             name: Routes.login,
             pageBuilder: (context, state) =>
-                const CupertinoPage(child:CreateWorkSpacePage() /*SignInPag/()*/),
+                const CupertinoPage(child: SignInPage()),
           ),  
+          
           GoRoute(
             parentNavigatorKey: _rootNavigatorKey,
             name: Routes.joinSpace,

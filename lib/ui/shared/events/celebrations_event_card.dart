@@ -165,7 +165,7 @@ class CurrentWeekEventCard extends StatelessWidget {
         decoration: BoxDecoration(
             color: context.colorScheme.containerLow,
             borderRadius: AppTheme.commonBorderRadius),
-        child: Row(
+        /*child: Row(
           children: [
             ImageProfile(
               radius: 20,
@@ -181,7 +181,7 @@ class CurrentWeekEventCard extends StatelessWidget {
                     : DateFormatter(context.l10n).showBirthdays(
                         dateTime: event.dateTime, name: event.name))),
           ],
-        ));
+        )*/);
   }
 }
 
