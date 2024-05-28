@@ -33,7 +33,7 @@ class UserProfileCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ImageProfile(
-                  backgroundColor: context.colorScheme.surface,
+                  backgroundColor: context.colorScheme.primary,
                   imageUrl: currentEmployee.imageUrl,
                   radius: 24,
                 ),

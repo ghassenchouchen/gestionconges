@@ -9,58 +9,46 @@ import '../../data/configs/theme.dart';
 class PickImageBottomSheet extends StatelessWidget {
   final void Function(ImageSource) onButtonTap;
 
-  const PickImageBottomSheet({super.key, required this.onButtonTap});
+  const PickImageBottomSheet({Key? key, required this.onButtonTap});
 
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context);
     return Container(
       decoration: BoxDecoration(
-          boxShadow: AppTheme.commonBoxShadow(context),
-          color: context.colorScheme.surface,
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-      height: 200,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        
+        boxShadow: AppTheme.commonBoxShadow(context),
+        color: context.colorScheme.surface,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
       ),
-    );
-  }
-}
-
-class SelectButton extends StatelessWidget {
-  final void Function()? onPressed;
-  final String label;
-  final IconData icon;
-
-  const SelectButton(
-      {super.key, required this.label, required this.icon, this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return OutlinedButton(
-      onPressed: onPressed,
-      style: OutlinedButton.styleFrom(
-          fixedSize: const Size(120, 120),
-          shape:
-              RoundedRectangleBorder(borderRadius: AppTheme.commonBorderRadius),
-          side: BorderSide(color: context.colorScheme.outlineColor, width: 1)),
+      height: 200,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CircleAvatar(
-            backgroundColor: context.colorScheme.primary,
-            radius: 25,
-            child: Icon(icon, color: context.colorScheme.surface),
-          ),
-          const SizedBox(height: 10),
           Text(
-            label,
-            style: AppTextStyle.style14
-                .copyWith(color: context.colorScheme.textSecondary),
-          )
+            "Select Image Source",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: context.colorScheme.surface,
+            ),
+          ),
+          SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                onPressed: () => onButtonTap(ImageSource.camera),
+                child: Text("Camera"),
+              ),
+              ElevatedButton(
+                onPressed: () => onButtonTap(ImageSource.gallery),
+                child: Text("Gallery"),
+              ),
+            ],
+          ),
         ],
       ),
     );

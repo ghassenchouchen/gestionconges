@@ -23,6 +23,7 @@ class DrawerBloc extends Bloc<DrawerEvents, DrawerState> {
     on<FetchSpacesEvent>(_fetchSpaces);
     on<ChangeSpaceEvent>(_changeSpace);
     on<SignOutFromSpaceEvent>(_signOutFromCurrentSpace);
+    //on<SignOutEvent>(_signOut);
   }
 
   Future<void> _fetchSpaces(

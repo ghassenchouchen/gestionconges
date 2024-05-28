@@ -95,6 +95,14 @@ class _LeaveCalendarState extends State<LeaveCalendar> {
         builder: (context, state) {
           final calendarFormat = state.calendarFormat;
           return TableCalendar(
+             enabledDayPredicate: (day) {
+    // Disable Saturday and Sunday by returning false
+    if (day.weekday == DateTime.saturday || day.weekday == DateTime.sunday) {
+      return false;
+    }
+    // Enable all other days
+    return true;
+  },
             calendarBuilders:
                 CalendarBuilders(headerTitleBuilder: (context, day) {
               return Row(
@@ -127,7 +135,7 @@ class _LeaveCalendarState extends State<LeaveCalendar> {
             calendarFormat: state.calendarFormat,
             selectedDayPredicate: (day) => isSameDay(state.selectedDate, day),
             firstDay: DateTime(2022),
-            lastDay: DateTime(2026),
+            lastDay: DateTime(2025),
             startingDayOfWeek: StartingDayOfWeek.sunday,
             calendarStyle: AppTheme.calendarStyle(context),
             daysOfWeekStyle: AppTheme.daysOfWeekStyle(context),

@@ -11,6 +11,7 @@ Invitation _$InvitationFromJson(Map<String, dynamic> json) => Invitation(
       spaceId: json['space_id'] as String,
       senderId: json['sender_id'] as String,
       receiverEmail: json['receiver_email'] as String,
+      role: $enumDecode(_$RoleEnumMap, json['role']),
     );
 
 Map<String, dynamic> _$InvitationToJson(Invitation instance) =>
@@ -19,4 +20,11 @@ Map<String, dynamic> _$InvitationToJson(Invitation instance) =>
       'space_id': instance.spaceId,
       'sender_id': instance.senderId,
       'receiver_email': instance.receiverEmail,
+      'role': _$RoleEnumMap[instance.role]!,
     };
+
+const _$RoleEnumMap = {
+  Role.admin: 1,
+  Role.employee: 2,
+  Role.hr: 3,
+};

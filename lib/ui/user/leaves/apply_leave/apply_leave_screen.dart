@@ -5,6 +5,7 @@ import 'package:pfeconges/data/core/extensions/context_extension.dart';
 import 'package:pfeconges/data/di/service_locator.dart';
 import 'package:pfeconges/style/app_bar.dart';
 import 'package:pfeconges/style/app_page.dart';
+import 'package:pfeconges/style/app_text_style.dart';
 import 'package:pfeconges/ui/user/leaves/apply_leave/widget/date_range_selection_leave_request.dart';
 import 'package:pfeconges/ui/user/leaves/apply_leave/widget/date_selection_buttons.dart';
 import 'package:pfeconges/ui/user/leaves/apply_leave/widget/leave_request_reason_card.dart';
@@ -41,11 +42,10 @@ class _ApplyLeaveScreenState extends State<ApplyLeaveScreen> {
   @override
   Widget build(BuildContext context) {
     return AppPage(
-      appBar:AppBar( backgroundColor: AppBarStyles.appBarBackgroundColor,
-        iconTheme: IconThemeData(color: AppBarStyles.appBarIconColor),
-        centerTitle: true,),
+    
       backGroundColor: context.colorScheme.surface,
-    titleWidget: const  Text('Demande de congé', style: AppBarStyles.appBarTextStyle), 
+         title: context.l10n.user_leaves_apply_appbar_tag,
+
       body: BlocListener<ApplyLeaveBloc, ApplyLeaveState>(
         listenWhen: (previous, current) =>
             current.isFailure || current.leaveRequestStatus == Status.success,

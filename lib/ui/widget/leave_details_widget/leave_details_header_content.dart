@@ -27,8 +27,8 @@ class LeaveTypeAgoTitleWithStatus extends StatelessWidget {
     String appliedOnPresentation = DateFormatter(AppLocalizations.of(context))
         .timeAgoPresentation(appliedOn);
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 18),
-      padding: const EdgeInsets.all(22),
+      margin: const EdgeInsets.symmetric(vertical: 16,),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: leaveStatusColor(status, context).withOpacity(0.2)),
@@ -45,16 +45,19 @@ class LeaveTypeAgoTitleWithStatus extends StatelessWidget {
         style: AppTextStyle.style20
             .copyWith(color: context.colorScheme.textPrimary),
       ),
-      const SizedBox(height: 2),
-        child, // add the child widget here
-
-      /*
+      //const SizedBox(height: 2),
+      Container( 
+        
+        child:
+      child,
+      ),
+      
       Text(
         
         appliedOnPresentation,
         style: AppTextStyle.style14
             .copyWith(color: context.colorScheme.textSecondary),
-      ),*/
+      ),
     ],
   ),
 ),

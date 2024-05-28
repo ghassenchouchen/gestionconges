@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pfeconges/data/core/exception/error_const.dart';
+import 'package:pfeconges/data/model/employee/employee.dart';
 import 'package:pfeconges/data/services/employee_service.dart';
 import 'package:pfeconges/data/services/mail_notification_service.dart';
 import '../../../../../data/core/utils/bloc_status.dart';
@@ -21,6 +22,7 @@ class InviteMemberBloc extends Bloc<InvitationEvent, InviteMemberState> {
       : super(const InviteMemberState()) {
     on<AddEmailEvent>(_enterEmailEvent);
     on<InviteMemberEvent>(_inviteMember);
+    on<UpdateRoleEvent>(_updateRoleEvent);
   }
 
   Future<void> _enterEmailEvent(
@@ -31,6 +33,7 @@ class InviteMemberBloc extends Bloc<InvitationEvent, InviteMemberState> {
       emit(state.copyWith(email: event.query, emailError: true));
     }
   }
+  
 
   Future<void> _inviteMember(
       InviteMemberEvent event, Emitter<InviteMemberState> emit) async {
@@ -45,7 +48,9 @@ class InviteMemberBloc extends Bloc<InvitationEvent, InviteMemberState> {
           await _invitationService.addInvitation(
               senderId: _userManager.userUID!,
               spaceId: _userManager.currentSpaceId!,
-              receiverEmail: state.email);
+              receiverEmail: state.email,
+              role: state.role,
+              );
           await _notificationService.sendInviteNotification(
             departmentName: _userManager.currentSpaceName!,
             receiver: state.email,
@@ -64,4 +69,12 @@ class InviteMemberBloc extends Bloc<InvitationEvent, InviteMemberState> {
   }
 
   bool validEmail(String email) => RegExp(r'\S+@\S+\.\S+').hasMatch(email);
+  
+  Future<void> _updateRoleEvent(
+  UpdateRoleEvent event, 
+  Emitter<InviteMemberState> emit,
+) async {
+  emit(state.copyWith(role: event.role));
 }
+}
+

@@ -140,6 +140,21 @@ class DrawerOptionList extends StatelessWidget {
                   context.read<DrawerBloc>().add(SignOutFromSpaceEvent()),
             ),
           ),
+         /* Future<void> _signOut(
+      SignOutEvent event, Emitter<JoinSpaceState> emit) async {
+    emit(state.copyWith(signOutStatus: Status.loading));
+    try {
+      bool isLogOut = await _authService.signOut();
+      if (isLogOut) {
+        await _userManager.removeAll();
+        emit(state.copyWith(signOutStatus: Status.success));
+      } else {
+        throw Exception(signOutError);
+      }
+    } on Exception {
+      emit(state.copyWith(error: signOutError, signOutStatus: Status.error));
+    }
+  }*/
         ],
       ),
     );

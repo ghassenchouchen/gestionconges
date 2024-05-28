@@ -47,7 +47,7 @@ class AppPage extends StatelessWidget {
               
             preferredSize: Size.fromHeight(51.0),
             child: ClipRRect(
-              borderRadius: BorderRadius.vertical(bottom: Radius.circular(14)), // Change this value to adjust the roundness of corners
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(14)), 
               child: AppBar(
               iconTheme: IconThemeData(color: Colors.white),
                 elevation: 0.0,

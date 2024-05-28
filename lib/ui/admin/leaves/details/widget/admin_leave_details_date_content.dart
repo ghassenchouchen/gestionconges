@@ -25,11 +25,7 @@ class AdminLeaveRequestDetailsDateContent extends StatelessWidget {
             style: AppTextStyle.style16
                 .copyWith(color: context.colorScheme.textPrimary)),
         const SizedBox(height: 8),
-        Text(
-          totalDays,
-          style:
-              AppTextStyle.style16.copyWith(color: context.colorScheme.textPrimary),
-        ),
+        
       ],
     );
   }

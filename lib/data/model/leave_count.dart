@@ -7,7 +7,7 @@ class LeaveCounts extends Equatable {
 
   const LeaveCounts({this.casualLeaves = 0.0, this.urgentLeaves = 0.0})
       : totalUsedLeave = urgentLeaves + casualLeaves;
-
+    
   @override
   List<Object?> get props => [totalUsedLeave, urgentLeaves, casualLeaves];
 }

@@ -7,11 +7,11 @@
   "sign_in_title_text": "Gestion facile des congés\navec LeaveFlow",
   
   "settings_tag": "Paramètres",
-  "members_tag": "Membres",
-  "leaves_tag": "Historique des congés",
+  "members_tag": "Equipe",
+  "leaves_tag": "Demandes de congés",
 
   "recent_tag": "Récent",
-  "past_tag": "Passé",
+  "past_tag": "Récent",
   "upcoming_tag": "À venir",
 
   "deactivate_tag": "Désactiver",
@@ -37,14 +37,14 @@
   
 "spaces_title": "Département",
   "delete_space_text": "Suppimer département",
-  "delete_dialog_description_text": "Supprimer ce département?",
+  "delete_dialog_description_text": "Voulez-vous Supprimer ce département?",
   "change_space_tag": "Modifier Département",
   "company_name_tag": "Visto Consulting",
-  "create_space_Website_url_label": "Nombre de membres",
+  "create_space_member_label": "Nombre de membres",
   "create_new_space_title": "Ajouter département",
-  "create_own_space_title": "Ajouter département",
-  "welcome_to_unity_text": "Welcome",
-  "spaces_list_title": "Départements pour  {email}",
+  "create_own_space_title": "Ajouter un département",
+  "welcome_to_unity_text": "Bienvenue!",
+  "spaces_list_title": "Départements gérés par  {email}",
   "@spaces_list_title": {
     "placeholders": {
       "email": {
@@ -111,12 +111,21 @@
     }
   },
 
-  "user_detail_role_type": "{role, select, admin{Admin} employee{Employé} hr{RH} other{autre}}",
+  "user_detail_role_type": "{role, select, admin{Admin} employee{Employé} hr{Responsable} other{autre}}",
   "@user_detail_role_type": {
     "description": "Passer la valeur du rôle pour obtenir le rôle de l'utilisateur",
     "placeholders": {
       "role": {
         "type": "String"
+      }
+    }
+  },
+  "user_add_role_type":"{role, select, employee{Employé} hr{Responsable} other{autre}}",
+  "@user_add_role_type": {
+    "description":"Passez la valeur du rôle pour ajouter le rôle",
+    "placeholders":{
+      "role":{
+        "type":"String"
       }
     }
   },
@@ -138,20 +147,20 @@
       }
     }
   },
-
+  "il_tag":"Il y a",
   "year_tag": "Année",
-  "year_ago_tag": "il y a un an",
-  "years_ago_tag": "il y a {years} ans",
-  "month_ago_tag": "il y a un mois",
-  "months_ago_tag": "il y a {months} mois",
-  "week_ago_tag": "il y a une semaine",
-  "weeks_ago_tag": "il y a {weeks} semaines",
-  "day_ago_tag": "il y a un jour",
-  "days_ago_tag": "il y a {days} jours",
-  "hour_ago_tag": "il y a une heure",
-  "hours_ago_tag": "il y a {hours} heures",
-  "minute_ago_tag": "il y a une minute",
-  "minutes_ago_tag": "il y a {minutes} minutes",
+  "year_ago_tag": "un an",
+  "years_ago_tag": " ans",
+  "month_ago_tag": "un mois",
+  "months_ago_tag": " mois",
+  "week_ago_tag": "une semaine",
+  "weeks_ago_tag": " semaines",
+  "day_ago_tag": "un jour",
+  "days_ago_tag": " jours",
+  "hour_ago_tag": "une heure",
+  "hours_ago_tag": " heures",
+  "minute_ago_tag": "une minute",
+  "minutes_ago_tag": " minutes",
   "dateFormatter_tomorrow": "Demain",
   "date_formatter_leave_request_total_half_day_text": "Durée totale du congé : demi-journée",
   "date_formatter_leave_request_total_zero_day_text": "Durée totale du congé : 0 jour",
@@ -234,7 +243,7 @@
     "state_controller_access_revoked_alert_dialogue_subtitle":"Vous n'avez pas d'accès",
 
   "empty_request_message": "",
-  "empty_request_title": "Aucune demande de congé en attente",
+  "empty_request_title": "Aucune demande de congé en attente.",
 
   "admin_home_absence_tag": "Absence",
   "admin_home_invite_member_appbar_tag": "Inviter un membre",
@@ -310,13 +319,13 @@
   "admin_leave_detail_approve_button_tag": "Approuver",
 
   "admin_employee_detail_profile_tag": "Profile",
-  "admin_employees_detail_time_off_tag": "Temps libre",
+  "admin_employees_detail_time_off_tag": "Solde utilisé",
 
   "invited_members_title": "Membres invités",
   "inactive_members_title": "Membres inactifs",
 
-  "admin_setting_update_leave_total_leaves_tag": "Congés totaux",
-  "yearly_paid_time_off_tag": "Congé annuel",
+  "admin_setting_update_leave_total_leaves_tag": "Total de jours de congé",
+  "yearly_paid_time_off_tag": "Solde maximum de congés",
   "hr_leave_record_tag": "Historique des congés",
 
   "leave_notification_email_tag": "E-mail de notification de congé",
@@ -324,7 +333,7 @@
   "user_leave_apply_tag": "Appliquer",
   "user_leave_used_leaves_tag": "Congés utilisés",
   "user_leave_past_leaves_tag": "Congés passés",
-  "user_leave_upcoming_leaves_tag": "Congés à venir",
+  "user_leave_upcoming_leaves_tag": "Congé à venir",
   "user_leave_show_less_tag": "Afficher moins",
   "user_leave_view_more_tag": "Voir plus",
   "no_leaves_tag": "Pas de congés !",
@@ -357,7 +366,7 @@
   "employee_dateOfBirth_tag": "Date de naissance",
   "employee_dateOfJoin_tag": "Date d'ajout",
   "employee_level_tag": "Niveau",
-  "employee_employeeID_tag": "ID Employé",
+  "employee_employeeID_tag": "ID",
   "employee_name_tag": "Nom",
 
   "admin_leave_detail_button_reject": "Rejeter",

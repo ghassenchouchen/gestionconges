@@ -46,7 +46,8 @@ void main() {
       id: 'id',
       spaceId: 'space-id',
       senderId: 'sender-id',
-      receiverEmail: 'joi@canopas.com');
+      receiverEmail: 'joi@canopas.com',
+      role:Role.hr,);
 
   setUp(() {
     employeeRepo = MockEmployeeRepo();

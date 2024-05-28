@@ -32,26 +32,24 @@ class DatePickerCard extends StatelessWidget {
         onTap: onPress,
         child: Padding(
           padding: const EdgeInsets.all(12),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SvgPicture.asset(
-                Assets.images.calendar,
-                
+              Text(
+                title,
+                style: AppTextStyle.style18
+                    .copyWith(color: context.colorScheme.textSecondary),
               ),
               const SizedBox(
-                width: 10,
+                height: 5,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
                 children: [
-                  Text(
-                    title,
-                    style: AppTextStyle.style16
-                        .copyWith(color: context.colorScheme.textSecondary),
+                  SvgPicture.asset(
+                    Assets.images.calendar,
                   ),
                   const SizedBox(
-                    height: 5,
+                    width: 10,
                   ),
                   Text(localization.date_format_yMMMd(date),
                       style: AppTextStyle.style18.copyWith(

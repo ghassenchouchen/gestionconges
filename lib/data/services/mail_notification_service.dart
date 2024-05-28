@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:pfeconges/data/configs/api.dart';
 import 'package:pfeconges/data/core/extensions/date_time.dart';
+import 'package:pfeconges/data/model/employee/employee.dart';
 import 'package:pfeconges/data/model/leave/leave.dart';
 
 @LazySingleton()
@@ -84,7 +85,7 @@ class NotificationService {
   }
 
   Future<void> sendInviteNotification(
-      {required String departmentName, required String receiver, required String role,}) async {
+      {required String departmentName, required String receiver, required Role role,}) async {
     try {
       http.Response response =
           await _httpClient.post(Uri.https(baseURL, '/api/invitation'),

@@ -60,10 +60,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context);
     return AppPage(
-      appBar: AppBar(
-      iconTheme: IconThemeData(color: AppBarStyles.appBarIconColor),
-
-      ),
+    
       backGroundColor: context.colorScheme.surface,
       leading: InkWell(
           onTap: () {
@@ -80,7 +77,6 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
           builder: (context) {
             final String name = SpaceNotifierWidget.of(context)?.name ?? "";
             return Text(name,
-            
                 style: AppTextStyle.headerStyle(context),
                 overflow: TextOverflow.ellipsis);
           },

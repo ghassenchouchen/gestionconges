@@ -113,22 +113,22 @@ class DateFormatter {
   String timeAgoPresentation(DateTime date) {
     Duration difference = today.difference(date);
     if (difference.inDays > 365) {
-      return "${(difference.inDays / 365).floor()} ${(difference.inDays / 365).floor() == 1 ? _localization.year_ago_tag : _localization.years_ago_tag} ";
+      return "${_localization.il_tag} ${(difference.inDays / 365).floor()} ${(difference.inDays / 365).floor() == 1 ? _localization.year_ago_tag : _localization.years_ago_tag} ";
     }
     if (difference.inDays > 30) {
-      return "${(difference.inDays / 30).floor()} ${(difference.inDays / 30).floor() == 1 ? _localization.month_ago_tag : _localization.months_ago_tag}";
+      return "${_localization.il_tag} ${(difference.inDays / 30).floor()} ${(difference.inDays / 30).floor() == 1 ? _localization.month_ago_tag : _localization.months_ago_tag}";
     }
     if (difference.inDays > 7) {
-      return "${(difference.inDays / 7).floor()} ${(difference.inDays / 7).floor() == 1 ? _localization.week_ago_tag : _localization.weeks_ago_tag} ";
+      return "${_localization.il_tag} ${(difference.inDays / 7).floor() == 1 ? _localization.week_ago_tag : _localization.weeks_ago_tag} ${(difference.inDays / 7).floor()}  ";
     }
     if (difference.inDays > 0) {
-      return "${difference.inDays} ${difference.inDays == 1 ? _localization.day_ago_tag : _localization.days_ago_tag}";
+      return "${_localization.il_tag} ${difference.inDays} ${difference.inDays == 1 ? _localization.day_ago_tag : _localization.days_ago_tag}";
     }
     if (difference.inHours > 0) {
-      return "${difference.inHours} ${difference.inHours == 1 ? _localization.hour_ago_tag : _localization.hours_ago_tag} ";
+      return "${_localization.il_tag} ${difference.inHours} ${difference.inHours == 1 ? _localization.hour_ago_tag : _localization.hours_ago_tag} ";
     }
     if (difference.inMinutes > 0) {
-      return "${difference.inMinutes} ${difference.inMinutes == 1 ? _localization.minute_ago_tag : _localization.minutes_ago_tag} ";
+      return "${_localization.il_tag} ${difference.inMinutes} ${difference.inMinutes == 1 ? _localization.minute_ago_tag : _localization.minutes_ago_tag} ";
     }
     return _localization.dateFormatter_just_now;
   }

@@ -83,12 +83,9 @@ class _UserLeaveDetailScreenState extends State<UserLeaveDetailScreen> {
                         appliedOn: state.leave.appliedOn,
                         leaveType: state.leave.type,
                         status: state.leave.status,
-                          child: UserLeaveRequestDateContent(leave: state.leave),
-
-                        ),
-                        
+                        child:Text("")),
                   ),
-                 // UserLeaveRequestDateContent(leave: state.leave),
+                  UserLeaveRequestDateContent(leave: state.leave),
                   PerDayDurationDateRange(
                       perDayDurationWithDate: state.leave.getDateAndDuration()),
                   ValidateWidget(
@@ -104,7 +101,11 @@ class _UserLeaveDetailScreenState extends State<UserLeaveDetailScreen> {
                       ),
                     ),
                   ),
-              
+                  ValidateWidget(
+                      isValid: state.leave.response.isNotNullOrEmpty &&
+                          userIsAbleToSeeAllData,
+                      child: ResponseNote(
+                          leaveResponse: state.leave.response ?? "")),
                 ],
               );
             }

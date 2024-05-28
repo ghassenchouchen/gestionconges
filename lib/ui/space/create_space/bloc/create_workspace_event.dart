@@ -3,6 +3,7 @@ import 'package:image_picker/image_picker.dart';
 
 abstract class CreateSpaceEvent extends Equatable {}
 
+
 class PageChangeEvent extends CreateSpaceEvent {
   final int page;
 

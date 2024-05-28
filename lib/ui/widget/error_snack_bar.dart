@@ -10,7 +10,7 @@ void showSnackBar({required BuildContext context, String? msg, String? error}) {
     final snackBar = SnackBar(
       content: error != null ? Text(error.errorMessage(context)) : Text(msg!),
       behavior: SnackBarBehavior.floating,
-      duration: const Duration(seconds: 1),
+      duration: const Duration(seconds: 3),
     );
     ScaffoldMessenger.of(context).removeCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(snackBar);

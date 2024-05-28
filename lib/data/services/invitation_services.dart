@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pfeconges/data/core/utils/const/firestore.dart';
+import 'package:pfeconges/data/model/employee/employee.dart';
 import 'package:pfeconges/data/model/invitation/invitation.dart';
 
 @LazySingleton()
@@ -44,13 +45,15 @@ class InvitationService {
   Future<void> addInvitation(
       {required String senderId,
       required String spaceId,
-      required String receiverEmail}) async {
+      required String receiverEmail,
+      required Role role}) async {
     final id = _invitationDb.doc().id;
     final Invitation invitation = Invitation(
         id: id,
         spaceId: spaceId,
         senderId: senderId,
-        receiverEmail: receiverEmail);
+        receiverEmail: receiverEmail, 
+        role:role);
     await _invitationDb.doc(id).set(invitation);
   }
 

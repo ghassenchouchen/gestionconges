@@ -11,3 +11,4 @@ class ChangeSpaceEvent extends DrawerEvents {
 }
 
 class SignOutFromSpaceEvent extends DrawerEvents {}
+//class SignOutEvent extends DrawerEvents {}

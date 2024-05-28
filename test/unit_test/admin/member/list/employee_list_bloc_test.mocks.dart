@@ -354,6 +354,7 @@ class MockInvitationService extends _i1.Mock implements _i11.InvitationService {
     required String? senderId,
     required String? spaceId,
     required String? receiverEmail,
+    required _i2.Role? role,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -363,6 +364,7 @@ class MockInvitationService extends _i1.Mock implements _i11.InvitationService {
             #senderId: senderId,
             #spaceId: spaceId,
             #receiverEmail: receiverEmail,
+            #role: role,
           },
         ),
         returnValue: _i5.Future<void>.value(),

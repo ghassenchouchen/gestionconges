@@ -16,7 +16,7 @@ class AppSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SvgPicture.asset(Assets.images.appLogo),
+        SvgPicture.asset(Assets.images.vistoicon),
         const SizedBox(
           height: 20,
         ),

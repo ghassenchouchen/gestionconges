@@ -77,7 +77,7 @@ class AdminLeaveDetailsActionButton extends StatelessWidget {
                       },
                       child: Text(
                           context.l10n.admin_leave_detail_reject_button_tag,
-                          style: AppTextStyle.style16.copyWith(
+                          style: AppTextStyle.style14.copyWith(
                               color: Colors.white)),
                     ),
                     ElevatedButton(
@@ -98,7 +98,7 @@ class AdminLeaveDetailsActionButton extends StatelessWidget {
                       },
                       child: Text(
                           context.l10n.admin_leave_detail_approve_button_tag,
-                          style: AppTextStyle.style16.copyWith(
+                          style: AppTextStyle.style14.copyWith(
                               color: Colors.white)),
                     ),
                   ],

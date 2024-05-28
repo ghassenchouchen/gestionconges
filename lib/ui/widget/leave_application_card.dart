@@ -26,7 +26,11 @@ class LeaveApplicationCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: AppTheme.commonBorderRadius,
-        color: context.colorScheme.containerLow,
+        color: Colors.white,
+        border: Border.all(
+      color: context.colorScheme.containerHigh, // Change this to your desired color
+      width: 2, // Change this to your desired width
+    ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(primaryHorizontalSpacing),
@@ -41,9 +45,12 @@ class LeaveApplicationCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     LeaveStatusView(
+                        leaveType: leaveApplication.leave.type,
+                      
                       status: leaveApplication.leave.status,
-                      leaveType: leaveApplication.leave.type,
                     ),
+                    
+                    
                     const SizedBox(
                       height: 10,
                     ),
@@ -58,7 +65,7 @@ class LeaveApplicationCard extends StatelessWidget {
                 ),
                 const Icon(
                   Icons.arrow_forward_ios,
-                  size: 15,
+                  size: 10,
                 )
               ],
             ),

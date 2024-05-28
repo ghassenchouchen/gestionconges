@@ -101,7 +101,7 @@ class _AdminEditEmployeeDetailsViewState
                   child: Text(
                     context.l10n.save_tag,
                     style: AppTextStyle.style16
-                        .copyWith(color: context.colorScheme.primary),
+                        .copyWith(color: Colors.white),
                   )),
         )
       ],

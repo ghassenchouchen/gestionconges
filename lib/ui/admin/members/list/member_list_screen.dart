@@ -42,10 +42,6 @@ class _MemberListScreenState extends State<MemberListScreen> {
   @override
   Widget build(BuildContext context) {
     return AppPage(
-           appBar:AppBar(
-        iconTheme: IconThemeData(color: AppBarStyles.appBarIconColor),
-        centerTitle: true,
-      ),
       backGroundColor: context.colorScheme.surface,
       title: AppLocalizations.of(context).members_tag,
       actions: [
@@ -54,21 +50,25 @@ class _MemberListScreenState extends State<MemberListScreen> {
             child: Text(
               context.l10n.invite_tag,
               style: AppTextStyle.style16
-                  .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                  .copyWith(color: Colors.white),
             ))
       ],
       body: BlocConsumer<AdminMembersBloc, AdminMembersState>(
         builder: (BuildContext context, AdminMembersState state) {
-          if (state.memberFetchStatus == Status.loading) {
-            return const AppCircularProgressIndicator();
-          } else {
-            return ListView.builder(
-              itemCount: state.activeMembers.length,
-              itemBuilder: (context, index) {
-                return EmployeeCard(employee: state.activeMembers[index]);
-              },
-            );
-          }
+          return state.memberFetchStatus == Status.loading
+              ? const AppCircularProgressIndicator()
+              : CustomScrollView(
+                  slivers: [
+                    MembersTile(
+                      index: 1,
+                      isExpanded: true, 
+                      employees: state.activeMembers,
+                      title: "Membres de l'équipe",
+                      invited: false,
+                    ),
+                    // ...
+                  ],
+                );
         },
         listener: (BuildContext context, AdminMembersState state) {
           if (state.error != null) {
@@ -95,11 +95,11 @@ class HeaderDelegate extends SliverPersistentHeaderDelegate {
   double get maxExtent => 80;
 
   @override
-  double get minExtent => 60;
+  double get minExtent => 80;
 
   @override
   bool shouldRebuild(HeaderDelegate oldDelegate) {
-    return child != oldDelegate.child;
+    return true;
   }
 }
 
@@ -125,19 +125,18 @@ class MembersTile extends StatelessWidget {
           pinned: true,
           delegate: HeaderDelegate(
               child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
-                color: context.colorScheme.containerLow,
+                color: context.colorScheme.surface,
                 borderRadius: BorderRadius.circular(12)),
             child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 2),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       title,
-                      style: AppTextStyle.style20.copyWith(
+                      style: AppTextStyle.style22.copyWith(
                           color: isExpanded
                               ? context.colorScheme.primary
                               : context.colorScheme.textPrimary),
@@ -155,12 +154,12 @@ class MembersTile extends StatelessWidget {
           ))),
       if (isExpanded)
         SliverPadding(
-            padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 0),
             sliver: employees.isEmpty
                 ? SliverToBoxAdapter(
                     child: Center(
                         child:
-                            Text("No any $title", style: AppTextStyle.style16)))
+                            Text("Pas de $title", style: AppTextStyle.style16)))
                 : SliverList.separated(
                     itemCount: employees.length,
                     itemBuilder: (context, index) {

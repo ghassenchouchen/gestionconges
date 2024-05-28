@@ -4,6 +4,7 @@ import 'package:pfeconges/data/configs/theme.dart';
 import 'package:pfeconges/data/core/extensions/context_extension.dart';
 import 'package:pfeconges/data/core/extensions/widget_extension.dart';
 import 'package:pfeconges/style/app_text_style.dart';
+import 'package:pfeconges/ui/widget/leave_card_status_view2.dart';
 import '../../data/core/utils/date_formatter.dart';
 import '../../data/model/leave/leave.dart';
 import 'leave_card_status_view.dart';
@@ -33,7 +34,8 @@ class LeaveCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                LeaveStatusView(status: leave.status),
+                LeaveStatusView2(status: leave.status), // Update to use LeaveStatusView2
+
                 Text(
                     DateFormatter(AppLocalizations.of(context))
                         .getDatePeriodPresentation(
@@ -74,7 +76,7 @@ class LeaveCard extends StatelessWidget {
                 const Icon(
                   Icons.arrow_forward_ios_rounded,
                   size: 16,
-                )
+                ),
               ],
             ),
           ],

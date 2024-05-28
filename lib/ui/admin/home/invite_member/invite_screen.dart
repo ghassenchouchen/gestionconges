@@ -4,7 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:pfeconges/data/core/extensions/context_extension.dart';
 import 'package:pfeconges/data/core/extensions/string_extension.dart';
 import 'package:pfeconges/data/di/service_locator.dart';
+import 'package:pfeconges/data/model/employee/employee.dart';
 import 'package:pfeconges/style/app_bar.dart';
+import 'package:pfeconges/style/app_text_style.dart';
 import 'package:pfeconges/style/other/app_button.dart';
 import 'package:pfeconges/ui/widget/circular_progress_indicator.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -79,6 +81,35 @@ class _SearchMemberScreenState extends State<SearchMemberScreen> {
                         .add(AddEmailEvent(query)),
                   );
                 }),
+                  const SizedBox(height: 10),
+                 BlocBuilder<InviteMemberBloc, InviteMemberState>(
+                  buildWhen: (previous, current) =>
+                      previous.role != current.role,
+                  builder: (context, state) => ButtonTheme(
+                    alignedDropdown: true,
+                    child: DropdownButton<Role>(
+                      dropdownColor: context.colorScheme.surface,
+                      isExpanded: true,
+                      icon: const Icon(Icons.arrow_drop_down),
+                      items: Role.values.map((role) {
+                        return DropdownMenuItem<Role>(
+                          value: role,
+                          child: Text(
+                            context.l10n.user_add_role_type(
+                                role.value.toString()),
+                            style: AppTextStyle.style18
+                                .copyWith(color: context.colorScheme.textPrimary),
+                          ),
+                        );
+                      }).toList(),
+                      value: state.role,
+                      onChanged: (Role? role) {
+                        context.read<InviteMemberBloc>().add(
+                            UpdateRoleEvent(role: role));
+                      },
+                    ),
+                  ),
+                ),
                 const SizedBox(height: 40),
                 AppButton(
                   tag: context.l10n.invite_tag,

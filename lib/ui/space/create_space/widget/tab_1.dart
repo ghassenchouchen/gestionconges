@@ -82,7 +82,7 @@ class _SpaceBasicDetailsState extends State<SpaceBasicDetails>
             builder: (context, state) {
               return FieldEntry(
                 hintText:
-                    AppLocalizations.of(context).create_space_Website_url_label,
+                    AppLocalizations.of(context).create_space_member_label,
                 errorText: state.domainError
                     ? locale.create_space_invalid_website_url_error
                     : null,

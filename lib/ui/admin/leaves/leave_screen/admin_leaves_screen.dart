@@ -86,7 +86,7 @@ class _AdminLeavesScreenState extends State<AdminLeavesScreen> {
       appBar:AppBar(iconTheme: IconThemeData(color: AppBarStyles.appBarIconColor),
         centerTitle: true,),
       backGroundColor: context.colorScheme.surface,
-      title: context.l10n.leaves_tag,
+      title: Text("Historique de congés").data,
       body: Column(
         children: [
           const AdminLeavesFilter(),

@@ -9,6 +9,8 @@ class AppTextStyle {
       fontWeight: FontWeight.w600,
       fontSize: 22,
       color: Colors.white);
+  static const TextStyle style22=
+        TextStyle(fontWeight: FontWeight.w600, fontSize: 22);
 
   static const TextStyle style24 =
       TextStyle(fontWeight: FontWeight.w600, fontSize: 24);

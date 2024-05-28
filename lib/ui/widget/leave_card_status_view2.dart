@@ -3,29 +3,24 @@ import 'package:pfeconges/data/core/extensions/context_extension.dart';
 import 'package:pfeconges/style/app_text_style.dart';
 import '../../data/model/leave/leave.dart';
 
-class LeaveStatusView extends StatelessWidget {
+class LeaveStatusView2 extends StatelessWidget {
   final double verticalPadding;
   final double horizontalPadding;
   final LeaveStatus status;
   final LeaveType? leaveType;
 
-  const LeaveStatusView(
-      {super.key,
-      required this.status,
-      this.leaveType,
-      this.verticalPadding = 4,
-      this.horizontalPadding = 10});
+  const LeaveStatusView2({
+    super.key,
+    required this.status,
+    this.leaveType,
+    this.verticalPadding = 4,
+    this.horizontalPadding = 10,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      //mainAxisAlignment: MainAxisAlignment.spaceBetween, // Add this line
-
       children: [
-        if (leaveType != null)
-          const SizedBox(
-            width: 8,
-          ),
         if (leaveType != null)
           Container(
             padding: const EdgeInsets.all(5),
@@ -33,11 +28,13 @@ class LeaveStatusView extends StatelessWidget {
                 color: context.colorScheme.containerLow,
                 borderRadius: BorderRadius.circular(5)),
             child: Text(
-                context.l10n
-                    .leave_type_placeholder_text(leaveType!.value.toString()),
-                style: AppTextStyle.style14),
+              context.l10n
+                  .leave_type_placeholder_text(leaveType!.value.toString()),
+              style: AppTextStyle.style14,
+            ),
           ),
-        const SizedBox(width: 100),
+        if (leaveType != null)
+          const SizedBox(width: 8), // Reduce the width here if needed
 
         LeaveStatusIcon(status: status),
         const SizedBox(width: 5),

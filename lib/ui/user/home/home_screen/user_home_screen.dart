@@ -59,7 +59,6 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context);
     return AppPage(
-      appBar: AppBar(),
         backGroundColor: context.colorScheme.surface,
         leading: InkWell(
             onTap: () {
@@ -98,10 +97,10 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                             Padding(
                               padding:
                                   const EdgeInsets.only(top: 16, bottom: 16),
-                              child: Text(locale.request_tag,
+                              child: Text("Votre demande",
                                   style: AppTextStyle.style20.copyWith(
                                       fontWeight: FontWeight.w600,
-                                      color: context.colorScheme.textPrimary)),
+                                      color: context.colorScheme.primary)),
                             ),
                             ListView.separated(
                                 physics: const NeverScrollableScrollPhysics(),
@@ -126,7 +125,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                         minHeight: 300,
                       ),
                       child: SizedBox(
-                          height: MediaQuery.of(context).size.height - 500,
+                          height: MediaQuery.of(context).size.height - 400,
                           child: state is UserHomeLoadingState ||
                                   state is UserHomeInitialState
                               ? const AppCircularProgressIndicator()

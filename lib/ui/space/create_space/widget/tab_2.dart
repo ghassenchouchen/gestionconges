@@ -8,7 +8,6 @@ import '../../../widget/employee_details_textfield.dart';
 import '../bloc/create_workspace_bloc.dart';
 import '../bloc/create_workspace_event.dart';
 import '../bloc/create_workspace_state.dart';
-
 class SetUpSpaceDetails extends StatefulWidget {
   final void Function()? onNextButtonPressed;
 

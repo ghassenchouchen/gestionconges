@@ -84,6 +84,7 @@ class UserStateNotifier with ChangeNotifier {
   }
 
   String? get userFirebaseAuthName => _userPreference.getAccount()?.name;
+  
 
   String? get userUID => _userPreference.getAccount()?.uid;
 

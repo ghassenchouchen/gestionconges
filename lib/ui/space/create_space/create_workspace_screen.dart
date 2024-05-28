@@ -59,17 +59,9 @@ class _CreateWorkSpaceScreenState extends State<CreateWorkSpaceScreen>
     final bloc = BlocProvider.of<CreateSpaceBLoc>(context);
     final locale = context.l10n;
     return AppPage(
-      appBar:
-         AppBar(
-            backgroundColor: AppBarStyles.appBarBackgroundColor,
-        iconTheme: IconThemeData(color: AppBarStyles.appBarIconColor),
-        centerTitle: true,
-
-      ),
         backGroundColor: context.colorScheme.surface,
-        titleWidget:  Text(locale.create_new_space_title,style: AppBarStyles.appBarTextStyle),
-        body: Material(
-          color: context.colorScheme.surface,
+        title: locale.create_new_space_title,
+        body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -97,26 +89,22 @@ class _CreateWorkSpaceScreenState extends State<CreateWorkSpaceScreen>
                       PersonalInfo(),
                     ],
                   ),
-                ),  
-              ],
-            ),
-          ),
-        ),
-        floatingActionButton: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: BlocBuilder<CreateSpaceBLoc, CreateSpaceState>(
-              buildWhen: (previous, current) =>
-                  previous.buttonState != current.buttonState ||
-                  previous.page != current.page ||
-                  previous.createSpaceStatus != current.createSpaceStatus,
-              builder: (context, state) {
-                return AppButton(
-                  loading: state.createSpaceStatus == Status.loading,
-                  tag: state.page == 2
-                      ? locale.create_space_tag
-                      : locale.next_tag,
-                  onTap: state.buttonState == ButtonState.enable
-                      ? () {
+                ),
+                BlocBuilder<CreateSpaceBLoc, CreateSpaceState>(
+                    buildWhen: (previous, current) =>
+                        previous.buttonState != current.buttonState ||
+                        previous.page != current.page ||
+                        previous.createSpaceStatus != current.createSpaceStatus,
+                    builder: (context, state) {
+                      return AppButton(
+                        backgroundColor: state.buttonState == ButtonState.enable
+                            ? context.colorScheme.primary
+                            : context.colorScheme.primary.withOpacity(0.5),
+                        loading: state.createSpaceStatus == Status.loading,
+                        tag: state.page == 2
+                            ? locale.create_space_tag
+                            : locale.next_tag,
+                        onTap: () {
                           if (state.page < 2) {
                             _tabController.animateTo(state.page + 1);
                             bloc.add(PageChangeEvent(page: state.page + 1));
@@ -124,10 +112,12 @@ class _CreateWorkSpaceScreenState extends State<CreateWorkSpaceScreen>
                           if (state.page == 2) {
                             bloc.add(CreateSpaceButtonTapEvent());
                           }
-                        }
-                      : null,
-                );
-              }),
+                        },
+                      );
+                    }),
+              ],
+            ),
+          ),
         ));
   }
 }

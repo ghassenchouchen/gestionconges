@@ -99,7 +99,7 @@ class _EditSpaceScreenState extends State<EditSpaceScreen> {
                     child: Text(
                       context.l10n.save_tag,
                       style: AppTextStyle.style16
-                          .copyWith(color: context.colorScheme.primary),
+                          .copyWith(color:Colors.white),
                     ))),
       ],
       body: BlocListener<EditSpaceBloc, EditSpaceState>(
@@ -151,7 +151,7 @@ class _EditSpaceScreenState extends State<EditSpaceScreen> {
               const SizedBox(height: 20),
               FieldEntry(
                 controller: _domainController,
-                hintText: context.l10n.create_space_Website_url_label,
+                hintText: context.l10n.create_space_member_label,
               ),
               const SizedBox(height: 20),
               FieldEntry(

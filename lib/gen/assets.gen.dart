@@ -71,6 +71,9 @@ class $AssetsImagesGen {
   AssetGenImage get vistoSplash =>
       const AssetGenImage('assets/images/visto-splash.png');
 
+  /// File path: assets/images/vistoicon.svg
+  String get vistoicon => 'assets/images/vistoicon.svg';
+
   /// List of all assets
   List<dynamic> get values => [
         appLogo,
@@ -90,7 +93,8 @@ class $AssetsImagesGen {
         pencilSquare,
         usersFilled,
         vistoIcon,
-        vistoSplash
+        vistoSplash,
+        vistoicon
       ];
 }
 
