@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:equatable/equatable.dart';
 import 'package:pfeconges/data/model/leave/leave.dart';
 
@@ -40,6 +42,16 @@ class ApplyLeaveUpdateLeaveOfTheDayEvent extends ApplyLeaveEvent {
 }
 
 class ApplyLeaveSubmitFormEvent extends ApplyLeaveEvent {
+  @override
+  List<Object?> get props => [];
+}
+class ApplyLeaveAddAttachmentEvent extends ApplyLeaveEvent {
+  final File attachment;
+  ApplyLeaveAddAttachmentEvent(String path, {required this.attachment});
+  @override
+  List<Object?> get props => [attachment];
+}
+class ValidateLeaveDaysEvent extends ApplyLeaveEvent {
   @override
   List<Object?> get props => [];
 }

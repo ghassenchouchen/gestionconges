@@ -5,6 +5,7 @@ import 'package:pfeconges/data/core/extensions/context_extension.dart';
 import 'package:pfeconges/data/core/extensions/string_extension.dart';
 import 'package:pfeconges/data/di/service_locator.dart';
 import 'package:pfeconges/data/model/employee/employee.dart';
+import 'package:pfeconges/data/provider/user_state.dart';
 import 'package:pfeconges/style/app_bar.dart';
 import 'package:pfeconges/style/app_text_style.dart';
 import 'package:pfeconges/style/other/app_button.dart';
@@ -40,14 +41,16 @@ class SearchMemberScreen extends StatefulWidget {
 class _SearchMemberScreenState extends State<SearchMemberScreen> {
   @override
   Widget build(BuildContext context) {
+        final userStateNotifier = getIt<UserStateNotifier>();
+
     final locale = AppLocalizations.of(context);
     return AppPage(
-      appBar:AppBar( backgroundColor: AppBarStyles.appBarBackgroundColor,
-      iconTheme: IconThemeData(color: AppBarStyles.appBarIconColor),
-        centerTitle: true,),
-        
+      appBar: AppBar(
+      ),
       backGroundColor: context.colorScheme.surface,
-      titleWidget: Text(locale.admin_home_invite_member_appbar_tag,style: AppBarStyles.appBarTextStyle),
+      titleWidget: Text(locale.admin_home_invite_member_appbar_tag,
+                          style: AppTextStyle.headerStyle(context),
+),
       body: BlocConsumer<InviteMemberBloc, InviteMemberState>(
         listenWhen: (previous, current) =>
             current.status == Status.success || current.error.isNotNullOrEmpty,
@@ -65,10 +68,13 @@ class _SearchMemberScreenState extends State<SearchMemberScreen> {
           if (state.status == Status.loading) {
             return const AppCircularProgressIndicator();
           }
+          
           return Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
+              
               children: [
+                
                 BlocBuilder<InviteMemberBloc, InviteMemberState>(
                     builder: (context, state) {
                   return FieldEntry(
@@ -81,8 +87,21 @@ class _SearchMemberScreenState extends State<SearchMemberScreen> {
                         .add(AddEmailEvent(query)),
                   );
                 }),
-                  const SizedBox(height: 10),
-                 BlocBuilder<InviteMemberBloc, InviteMemberState>(
+                const SizedBox(height: 10),
+                Padding(
+        padding: const EdgeInsets.symmetric(vertical:16,horizontal:3),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Text(
+                "Rôle",
+                style: AppTextStyle.style18
+                    .copyWith(color: context.colorScheme.textSecondary),
+              ),
+            ),
+                BlocBuilder<InviteMemberBloc, InviteMemberState>(
                   buildWhen: (previous, current) =>
                       previous.role != current.role,
                   builder: (context, state) => ButtonTheme(
@@ -91,31 +110,40 @@ class _SearchMemberScreenState extends State<SearchMemberScreen> {
                       dropdownColor: context.colorScheme.surface,
                       isExpanded: true,
                       icon: const Icon(Icons.arrow_drop_down),
+                      
                       items: Role.values.map((role) {
                         return DropdownMenuItem<Role>(
                           value: role,
                           child: Text(
-                            context.l10n.user_add_role_type(
-                                role.value.toString()),
-                            style: AppTextStyle.style18
-                                .copyWith(color: context.colorScheme.textPrimary),
+                            context.l10n
+                                .user_add_role_type(role.value.toString()),
+                            style: AppTextStyle.style18.copyWith(
+                                color: context.colorScheme.textPrimary),
                           ),
                         );
                       }).toList(),
                       value: state.role,
                       onChanged: (Role? role) {
-                        context.read<InviteMemberBloc>().add(
-                            UpdateRoleEvent(role: role));
+                        context
+                            .read<InviteMemberBloc>()
+                            .add(UpdateRoleEvent(role: role));
                       },
                     ),
                   ),
                 ),
+          ],
+        ),
+                ),
                 const SizedBox(height: 40),
-                AppButton(
-                  tag: context.l10n.invite_tag,
-                  onTap: () =>
-                      context.read<InviteMemberBloc>().add(InviteMemberEvent()),
-                )
+                
+               
+                    AppButton(
+                      tag: context.l10n.invite_tag,
+                      onTap: () => context
+                          .read<InviteMemberBloc>()
+                          .add(InviteMemberEvent()),
+                    ),
+                  
               ],
             ),
           );

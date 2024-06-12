@@ -12,6 +12,7 @@ import 'package:pfeconges/ui/space/join_space/widget/app_section.dart';
 import 'package:pfeconges/ui/space/join_space/widget/spaces.dart';
 import 'package:pfeconges/ui/widget/error_snack_bar.dart';
 import '../../../data/core/utils/bloc_status.dart';
+import '../../../data/provider/user_state.dart';
 import '../../widget/app_dialog.dart';
 
 class JoinSpacePage extends StatelessWidget {
@@ -34,6 +35,8 @@ class JoinSpaceScreen extends StatefulWidget {
 }
 
 class _JoinSpaceScreenState extends State<JoinSpaceScreen> {
+    final UserStateNotifier userManager = getIt<UserStateNotifier>();
+
   @override
   Widget build(BuildContext context) {
     return AppPage(
@@ -54,7 +57,8 @@ class _JoinSpaceScreenState extends State<JoinSpaceScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const AppSection(),
+                 AppSection( 
+                ),
                 const SizedBox(
                   height: 20,
                 ),

@@ -34,6 +34,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       if (authUser != null) {
         final Account user = await _accountService.getUser(authUser);
         await _userStateNotifier.setUser(user);
+
         emit(state.copyWith(
             emailPasswordSignInLoading: false, signInSuccess: true, error: ''));
       } else {

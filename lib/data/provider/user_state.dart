@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pfeconges/data/repo/employee_repo.dart';
 import 'package:pfeconges/data/bloc/user_state/space_change_notifier.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../di/service_locator.dart';
 import '../model/account/account.dart';
 import '../model/employee/employee.dart';
@@ -10,7 +11,6 @@ import '../model/space/space.dart';
 import '../pref/user_preference.dart';
 
 enum UserState { authenticated, unauthenticated, spaceJoined, update }
-
 @LazySingleton()
 class UserStateNotifier with ChangeNotifier {
   final FirebaseAuth _firebaseAuth;
@@ -26,22 +26,43 @@ class UserStateNotifier with ChangeNotifier {
   }
 
   void getUserStatus() async {
-    if (_firebaseAuth.currentUser != null) {
-      if (_userPreference.getAccount() == null) {
-        _userState = UserState.unauthenticated;
-      } else if (_userPreference.getSpace() != null &&
-          _userPreference.getEmployee() != null) {
-        _userState = UserState.spaceJoined;
-      } else if (_userPreference.getAccount() != null) {
-        _userState = UserState.authenticated;
-      }
-    }
-  }
+    try {
+      if (_firebaseAuth.currentUser != null) {
+        final account = _userPreference.getAccount();
+        final space = _userPreference.getSpace();
+        final employee = _userPreference.getEmployee();
 
+        // Debug statements
+        print('Account: $account');
+        print('Space: $space');
+        print('Employee: $employee');
+
+        if (account == null) {
+          _userState = UserState.unauthenticated;
+          print('No account found');
+        } else if (space != null && employee != null) {
+          _userState = UserState.spaceJoined;
+          print('User has joined a space');
+        } else {
+          _userState = UserState.authenticated;
+          print('User is authenticated');
+        }
+      } else {
+        print('No current user in Firebase Auth');
+      }
+    } catch (e) {
+      print('Error in getUserStatus: $e');
+      _userState = UserState.unauthenticated;
+    }
+    notifyListeners();
+  }
   Future<void> setUser(Account user) async {
     await _userPreference.setAccount(user);
+    
+    
     _userState = UserState.authenticated;
     notifyListeners();
+    
   }
 
   Future<void> setEmployeeWithSpace(
@@ -84,11 +105,12 @@ class UserStateNotifier with ChangeNotifier {
   }
 
   String? get userFirebaseAuthName => _userPreference.getAccount()?.name;
-  
 
   String? get userUID => _userPreference.getAccount()?.uid;
 
   String? get userEmail => _userPreference.getAccount()?.email;
+
+  String? get userName => _userPreference.getAccount()?.name;
 
   Space? get currentSpace => _userPreference.getSpace();
 
@@ -102,9 +124,18 @@ class UserStateNotifier with ChangeNotifier {
 
   Employee get employee => _employee!;
 
-  bool get isAdmin => _employee?.role == Role.admin;
+  bool get isAdmin {
+    print('Checking isAdmin: ${_employee?.role == Role.admin}');
+    return _employee?.role == Role.admin;
+  }
 
-  bool get isEmployee => _employee?.role == Role.employee;
+  bool get isEmployee {
+    print('Checking isEmployee: ${_employee?.role == Role.employee}');
+    return _employee?.role == Role.employee;
+  }
 
-  bool get isHR => _employee?.role == Role.hr;
+  bool get isHR {
+    print('Checking isHR: ${_employee?.role == Role.hr}');
+    return _employee?.role == Role.hr;
+  }
 }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:equatable/equatable.dart';
 import 'package:pfeconges/data/model/leave/leave.dart';
 
@@ -14,6 +16,9 @@ class ApplyLeaveState extends Equatable {
   final bool showTextFieldError;
   final String? error;
   final String? leaveId;
+  final File? attachment;
+  final Map<LeaveType, int> availableLeaveDays;
+
 
   const ApplyLeaveState({
     this.leaveId,
@@ -26,6 +31,9 @@ class ApplyLeaveState extends Equatable {
     required this.selectedDates,
     this.totalLeaveDays = 1,
     this.reason = "",
+    this.attachment,
+    this.availableLeaveDays = const {LeaveType.casualLeave: 21, LeaveType.urgentLeave: 5},
+
   });
 
   ApplyLeaveState copyWith({
@@ -39,6 +47,8 @@ class ApplyLeaveState extends Equatable {
     double? totalLeaveDays,
     String? reason,
     String? error,
+        File? attachment,
+
   }) {
     return ApplyLeaveState(
         leaveId: leaveId ?? this.leaveId,
@@ -50,7 +60,9 @@ class ApplyLeaveState extends Equatable {
         leaveType: leaveType ?? this.leaveType,
         reason: reason ?? this.reason,
         selectedDates: selectedDates ?? this.selectedDates,
-        totalLeaveDays: totalLeaveDays ?? this.totalLeaveDays);
+        totalLeaveDays: totalLeaveDays ?? this.totalLeaveDays,
+        attachment: attachment ?? this.attachment,
+);
   }
 
   bool get isFailure => error != null && leaveRequestStatus == Status.error;

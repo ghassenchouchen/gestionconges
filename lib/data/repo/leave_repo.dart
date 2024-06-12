@@ -97,4 +97,42 @@ class LeaveRepo {
   Future<Leave?> fetchLeave({required String leaveId}) async =>
       await _leaveService.fetchLeave(
           leaveId: leaveId, spaceId: _userStateNotifier.currentSpaceId!);
+           Future<LeaveCounts> getLeaveCounts(String uid) async {
+    return await _leaveService.getLeaveCounts(
+        uid: uid, spaceId: _userStateNotifier.currentSpaceId!);
+  }
+    Future<bool> canApplyForLeave(String uid, LeaveType leaveType, double leaveDaysToApply) async {
+  final leaveCounts = await getLeaveCounts(uid);
+  double totalLeaveBalance;
+
+  switch (leaveType) {
+    case LeaveType.casualLeave:
+      totalLeaveBalance = 21.0;
+      break;
+    case LeaveType.urgentLeave:
+      totalLeaveBalance = 60.0;
+      break;
+    // Add more cases as needed
+    default:
+      totalLeaveBalance = 0.0;
+  }
+
+  double usedLeave;
+  switch (leaveType) {
+    case LeaveType.casualLeave:
+      usedLeave = leaveCounts.casualLeaves;
+      break;
+    case LeaveType.urgentLeave:
+      usedLeave = leaveCounts.urgentLeaves;
+      break;
+    // Add more cases as needed
+    default:
+      usedLeave = 0.0;
+  }
+
+  final double remainingBalance = totalLeaveBalance - usedLeave;
+  return remainingBalance >= leaveDaysToApply;
+}
+
+
 }

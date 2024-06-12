@@ -131,6 +131,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                               ? const AppCircularProgressIndicator()
                               : EmptyScreen(
                                   title: locale.empty_request_title,
+                                  
                                   message: locale.empty_request_message)));
                 },
                 listenWhen: (previous, current) =>

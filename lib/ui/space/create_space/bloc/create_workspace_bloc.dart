@@ -25,13 +25,13 @@ class CreateSpaceBLoc extends Bloc<CreateSpaceEvent, CreateSpaceState>
 
   CreateSpaceBLoc(this._spaceService, this._userManager, this._employeeService,
       this.imagePicker, this.storageService)
-      : super(CreateSpaceState(ownerName: _userManager.userFirebaseAuthName)) {
+      : super(CreateSpaceState(ownerName: 'Mohamed')) {
     on<PageChangeEvent>(_onPageChange);
     on<CompanyNameChangeEvent>(_onNameChanged);
     on<CompanyDomainChangeEvent>(_onDomainChanged);
     on<PaidTimeOffChangeEvent>(_onTimeOffChanged);
     on<CreateSpaceButtonTapEvent>(_createSpace);
-    on<UserNameChangeEvent>(_changeUserName);
+    //on<UserNameChangeEvent>(_changeUserName);
     on<PickImageEvent>(_pickImage);
   }
 
@@ -49,7 +49,7 @@ class CreateSpaceBLoc extends Bloc<CreateSpaceEvent, CreateSpaceState>
         }
         break;
       case 2:
-        if (validateFirstStep && validateSecondStep && validateThirdStep) {
+        if (validateFirstStep && validateSecondStep) {
           emit(state.copyWith(buttonState: ButtonState.enable));
         }
     }
@@ -93,7 +93,7 @@ class CreateSpaceBLoc extends Bloc<CreateSpaceEvent, CreateSpaceState>
           buttonState: ButtonState.enable));
     }
   }
-
+  
   void _changeUserName(
       UserNameChangeEvent event, Emitter<CreateSpaceState> emit) {
     if (validInputLength(event.name)) {
@@ -133,7 +133,7 @@ class CreateSpaceBLoc extends Bloc<CreateSpaceEvent, CreateSpaceState>
 
   Future<void> _createSpace(
       CreateSpaceButtonTapEvent event, Emitter<CreateSpaceState> emit) async {
-    if (validateFirstStep && validateSecondStep && validateThirdStep) {
+    if (validateFirstStep && validateSecondStep) {
       emit(state.copyWith(createSpaceStatus: Status.loading));
       String? logoURL;
       try {

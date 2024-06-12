@@ -13,7 +13,21 @@ import '../../../data/core/utils/bloc_status.dart';
 import '../../../data/di/service_locator.dart';
 import 'bloc/create_workspace_bloc.dart';
 import 'bloc/create_workspace_event.dart';
-
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pfeconges/data/core/extensions/context_extension.dart';
+import 'package:pfeconges/style/app_bar.dart';
+import 'package:pfeconges/style/app_page.dart';
+import 'package:pfeconges/style/app_text_style.dart';
+import 'package:pfeconges/style/other/app_button.dart';
+import 'package:pfeconges/ui/space/create_space/bloc/create_workspace_state.dart';
+import 'package:pfeconges/ui/space/create_space/widget/tab_1.dart';
+import 'package:pfeconges/ui/space/create_space/widget/tab_2.dart';
+import 'package:pfeconges/ui/space/create_space/widget/tab_3.dart';
+import '../../../data/core/utils/bloc_status.dart';
+import '../../../data/di/service_locator.dart';
+import 'bloc/create_workspace_bloc.dart';
+import 'bloc/create_workspace_event.dart';
 class CreateWorkSpacePage extends StatelessWidget {
   const CreateWorkSpacePage({super.key});
 
@@ -40,7 +54,7 @@ class _CreateWorkSpaceScreenState extends State<CreateWorkSpaceScreen>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
     _tabController.addListener(() {
       BlocProvider.of<CreateSpaceBLoc>(context)
           .add(PageChangeEvent(page: _tabController.index));
@@ -59,65 +73,63 @@ class _CreateWorkSpaceScreenState extends State<CreateWorkSpaceScreen>
     final bloc = BlocProvider.of<CreateSpaceBLoc>(context);
     final locale = context.l10n;
     return AppPage(
-        backGroundColor: context.colorScheme.surface,
-        title: locale.create_new_space_title,
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                TabBar(
-                  indicatorSize: TabBarIndicatorSize.tab,
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  labelStyle: AppTextStyle.style16
-                      .copyWith(color: context.colorScheme.textPrimary),
+      backGroundColor: context.colorScheme.surface,
+      title: locale.create_new_space_title,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              TabBar(
+                indicatorSize: TabBarIndicatorSize.tab,
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                labelStyle: AppTextStyle.style16
+                    .copyWith(color: context.colorScheme.textPrimary),
+                controller: _tabController,
+                indicatorColor: context.colorScheme.primary,
+                labelColor: context.colorScheme.primary,
+                tabs: [
+                  Tab(text: locale.create_space_tab_1_tag),
+                  Tab(text: locale.create_space_tab_2_tag),
+                ],
+              ),
+              Expanded(
+                child: TabBarView(
                   controller: _tabController,
-                  indicatorColor: context.colorScheme.primary,
-                  labelColor: context.colorScheme.primary,
-                  tabs: [
-                    Tab(text: locale.create_space_tab_1_tag),
-                    Tab(text: locale.create_space_tab_2_tag),
-                    Tab(text: locale.create_space_tab_3_tag)
+                  children: const [
+                    SpaceBasicDetails(),
+                    SetUpSpaceDetails(),
                   ],
                 ),
-                Expanded(
-                  child: TabBarView(
-                    controller: _tabController,
-                    children: const [
-                      SpaceBasicDetails(),
-                      SetUpSpaceDetails(),
-                      PersonalInfo(),
-                    ],
-                  ),
-                ),
-                BlocBuilder<CreateSpaceBLoc, CreateSpaceState>(
-                    buildWhen: (previous, current) =>
-                        previous.buttonState != current.buttonState ||
-                        previous.page != current.page ||
-                        previous.createSpaceStatus != current.createSpaceStatus,
-                    builder: (context, state) {
-                      return AppButton(
-                        backgroundColor: state.buttonState == ButtonState.enable
-                            ? context.colorScheme.primary
-                            : context.colorScheme.primary.withOpacity(0.5),
-                        loading: state.createSpaceStatus == Status.loading,
-                        tag: state.page == 2
-                            ? locale.create_space_tag
-                            : locale.next_tag,
-                        onTap: () {
-                          if (state.page < 2) {
-                            _tabController.animateTo(state.page + 1);
-                            bloc.add(PageChangeEvent(page: state.page + 1));
-                          }
-                          if (state.page == 2) {
-                            bloc.add(CreateSpaceButtonTapEvent());
-                          }
-                        },
-                      );
-                    }),
-              ],
-            ),
+              ),
+              BlocBuilder<CreateSpaceBLoc, CreateSpaceState>(
+                buildWhen: (previous, current) =>
+                    previous.buttonState != current.buttonState ||
+                    previous.page != current.page ||
+                    previous.createSpaceStatus != current.createSpaceStatus,
+                builder: (context, state) {
+                  return AppButton(
+                    backgroundColor: state.buttonState == ButtonState.enable
+                        ? context.colorScheme.primary
+                        : context.colorScheme.primary.withOpacity(0.5),
+                    loading: state.createSpaceStatus == Status.loading,
+                    tag: locale.next_tag,
+                    onTap: () {
+                      if (state.page < 1) { 
+                        _tabController.animateTo(state.page + 1);
+                        bloc.add(PageChangeEvent(page: state.page + 1));
+                      }
+                      if (state.page == 1) {
+                        bloc.add(CreateSpaceButtonTapEvent());
+                      }
+                    },
+                  );
+                },
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

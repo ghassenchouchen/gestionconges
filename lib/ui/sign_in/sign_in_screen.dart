@@ -173,7 +173,7 @@ class SignInScreenState extends State<SignInScreen>
                                     "Révolutionner le congé!",
                                     style: TextStyle(
                                       color: context.colorScheme.primary,
-                                      fontSize: 32,
+                                      fontSize: 29,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),

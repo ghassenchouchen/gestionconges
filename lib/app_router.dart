@@ -64,8 +64,7 @@ class AppRouter {
             name: Routes.login,
             pageBuilder: (context, state) =>
                 const CupertinoPage(child: SignInPage()),
-          ),  
-          
+          ),
           GoRoute(
             parentNavigatorKey: _rootNavigatorKey,
             name: Routes.joinSpace,
@@ -370,10 +369,14 @@ class AppRouter {
           if (userManager.state == UserState.unauthenticated) {
             return loggingIn ? null : Routes.login;
           }
+       
           if (userManager.state == UserState.authenticated &&
               !location.contains(Routes.joinSpace)) {
             return Routes.joinSpace;
           }
+          
+          
+
           if (userManager.state == UserState.update ||
               (userManager.state == UserState.spaceJoined &&
                   location.contains(Routes.joinSpace))) {

@@ -6,6 +6,7 @@ import 'package:pfeconges/data/di/service_locator.dart';
 import 'package:pfeconges/style/app_bar.dart';
 import 'package:pfeconges/style/app_page.dart';
 import 'package:pfeconges/style/app_text_style.dart';
+import 'package:pfeconges/ui/user/leaves/apply_leave/widget/attachment_card.dart';
 import 'package:pfeconges/ui/user/leaves/apply_leave/widget/date_range_selection_leave_request.dart';
 import 'package:pfeconges/ui/user/leaves/apply_leave/widget/date_selection_buttons.dart';
 import 'package:pfeconges/ui/user/leaves/apply_leave/widget/leave_request_reason_card.dart';
@@ -67,6 +68,7 @@ class _ApplyLeaveScreenState extends State<ApplyLeaveScreen> {
             LeaveRequestDateRange(),
             TotalDaysMsgBox(),
             LeaveRequestReasonCard(),
+            //AttachmentCard(),
           ],
         ),
       ),

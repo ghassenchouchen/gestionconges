@@ -53,6 +53,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/ic_users.svg
   String get icUsers => 'assets/images/ic_users.svg';
 
+  /// File path: assets/images/mvc.png
+  AssetGenImage get mvc => const AssetGenImage('assets/images/mvc.png');
+
   /// File path: assets/images/office_growth.png
   AssetGenImage get officeGrowth =>
       const AssetGenImage('assets/images/office_growth.png');
@@ -89,6 +92,7 @@ class $AssetsImagesGen {
         icHome,
         icMenu,
         icUsers,
+        mvc,
         officeGrowth,
         pencilSquare,
         usersFilled,

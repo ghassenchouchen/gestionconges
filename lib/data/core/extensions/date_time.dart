@@ -15,7 +15,8 @@ extension DateExtention on int {
 }
 
 extension TimestampExtension on DateTime {
-  int get futureDateSelectionYear => year + 2;
+  int get futureDateSelectionYear => year + 1;
+  int get selectionYear => year;
 
   bool isDateInCurrentWeek(DateTime currentDate) =>
       month == currentDate.month &&

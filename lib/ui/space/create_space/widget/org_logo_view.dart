@@ -13,9 +13,9 @@ class OrgLogoView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Stack(
-        alignment: const Alignment(1.5, 1.5),
+        alignment: const Alignment(1.4, 1.4),
         children: [
-          SpaceLogoView(size: 110, pickedLogoFile: pickedLogoFile),
+          SpaceLogoView(size: 75, pickedLogoFile: pickedLogoFile),
        
         ],
       ),

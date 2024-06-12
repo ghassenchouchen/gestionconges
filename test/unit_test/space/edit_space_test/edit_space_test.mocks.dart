@@ -250,6 +250,16 @@ class MockUserStateNotifier extends _i1.Mock implements _i10.UserStateNotifier {
       ) as _i8.Future<void>);
 
   @override
+  _i8.Future<void> clearLocalStorage() => (super.noSuchMethod(
+        Invocation.method(
+          #clearLocalStorage,
+          [],
+        ),
+        returnValue: _i8.Future<void>.value(),
+        returnValueForMissingStub: _i8.Future<void>.value(),
+      ) as _i8.Future<void>);
+
+  @override
   _i8.Future<void> setEmployeeWithSpace({
     required _i9.Space? space,
     required _i3.Employee? spaceUser,

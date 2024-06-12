@@ -43,6 +43,8 @@ class ApplyLeaveBloc extends Bloc<ApplyLeaveEvent, ApplyLeaveState>
     on<ApplyLeaveUpdateLeaveOfTheDayEvent>(_updateLeaveOfTheDay);
     on<ApplyLeaveSubmitFormEvent>(_applyLeave);
     on<ApplyLeaveChangeLeaveTypeEvent>(_updateLeaveType);
+    on<ValidateLeaveDaysEvent>(_validateLeaveDays);
+    on<ApplyLeaveAddAttachmentEvent>(_addAttachment);
   }
 
   void _updateStartLeaveDate(
@@ -94,6 +96,31 @@ class ApplyLeaveBloc extends Bloc<ApplyLeaveEvent, ApplyLeaveState>
     }
   }
 
+  void _validateLeaveDays(
+      ValidateLeaveDaysEvent event, Emitter<ApplyLeaveState> emit) {
+    final selectedLeaveType = state.leaveType;
+    final maxLeaveDays = state.availableLeaveDays[selectedLeaveType]!;
+    final totalLeaveDays = state.totalLeaveDays;
+
+    if (totalLeaveDays >= 21) {
+      emit(state.copyWith(
+        error:
+            "You do not have enough leave balance for ${selectedLeaveType.name}.",
+        leaveRequestStatus: Status.error,
+      ));
+    } else {
+      emit(state.copyWith(
+        error: null, // Clear any previous error
+        leaveRequestStatus: Status.success, // Indicate valid input
+      ));
+    }
+  }
+
+  void _addAttachment(
+      ApplyLeaveAddAttachmentEvent event, Emitter<ApplyLeaveState> emit) {
+    emit(state.copyWith(attachment: event.attachment));
+  }
+
   Future<void> _applyLeave(
       ApplyLeaveSubmitFormEvent event, Emitter<ApplyLeaveState> emit) async {
     emit(state.copyWith(leaveRequestStatus: Status.loading));
@@ -105,6 +132,14 @@ class ApplyLeaveBloc extends Bloc<ApplyLeaveEvent, ApplyLeaveState>
     } else if (state.totalLeaveDays == 0) {
       emit(state.copyWith(
           error: applyMinimumHalfDay, leaveRequestStatus: Status.error));
+    } else if (state.leaveType == LeaveType.urgentLeave &&
+        state.totalLeaveDays > 5) {
+      emit(state.copyWith(
+          error: applyLessThan21Days, leaveRequestStatus: Status.error));
+    } else if (state.leaveType == LeaveType.casualLeave &&
+        state.totalLeaveDays > 21) {
+      emit(state.copyWith(
+          error: applyLessThan21Days, leaveRequestStatus: Status.error));
     } else if (state.endDate.difference(state.startDate).inDays.isNegative) {
       emit(state.copyWith(
           error: invalidLeaveDateError, leaveRequestStatus: Status.error));
@@ -114,11 +149,27 @@ class ApplyLeaveBloc extends Bloc<ApplyLeaveEvent, ApplyLeaveState>
         final leaveAlreadyExist = await _leaveRepo.checkLeaveAlreadyApplied(
             uid: _userStateNotifier.userUID!,
             dateDuration: leaveData.getDateAndDuration());
+        final uid = _userStateNotifier.userUID!;
+        final leaveDaysToApply = state.totalLeaveDays;
+
+        final canApply =
+            await _leaveRepo.canApplyForLeave(uid, state.leaveType!, leaveDaysToApply);
+
         if (leaveAlreadyExist) {
           emit(state.copyWith(
               error: alreadyLeaveAppliedError,
               leaveRequestStatus: Status.error));
+        } else if (!canApply) {
+           emit(state.copyWith(
+          error: invalidLeaveDateError, leaveRequestStatus: Status.error));
         } else {
+/*
+           if (state.attachment != null) {
+          String attachmentUrl =
+              await uploadFileToStorage(state.attachment!); // Implement this function to upload to Firebase Storage
+          leaveData.attachmentUrl = attachmentUrl; // Set the URL in leaveData
+        }*/
+
           await _leaveRepo.applyForLeave(leave: leaveData);
           final notificationEmail =
               _userStateNotifier.currentSpace!.notificationEmail;
@@ -165,7 +216,8 @@ class ApplyLeaveBloc extends Bloc<ApplyLeaveEvent, ApplyLeaveState>
     return Leave(
       leaveId: _leaveRepo.generateLeaveId,
       uid: _userStateNotifier.employeeId,
-      type:state.leaveType, //isUrgentLeave ? LeaveType.urgentLeave : state.leaveType,
+      type: state
+          .leaveType, //isUrgentLeave ? LeaveType.urgentLeave : state.leaveType,
       startDate: firstDate,
       endDate: lastDate,
       total: state.totalLeaveDays,
@@ -173,6 +225,7 @@ class ApplyLeaveBloc extends Bloc<ApplyLeaveEvent, ApplyLeaveState>
       status: LeaveStatus.pending,
       appliedOn: appliedOn,
       perDayDuration: selectedDates.values.toList(),
+      //attachment:state.attachment
     );
   }
 }

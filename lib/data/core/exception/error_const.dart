@@ -22,6 +22,7 @@ const String fillDetailsError = 'fill-all-details';
 //Exception:When leave request for less than 1 hr
 const String applyMinimumHalfDay = 'apply-minimum-half-day';
 
+const String applyLessThan21Days = 'apply-less-than-21-days';
 //Exception: When user selected wrong leave date like end leave date is before start leavedate
 const String invalidLeaveDateError = 'invalid-leave_date_error';
 

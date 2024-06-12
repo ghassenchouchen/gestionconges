@@ -19,6 +19,7 @@ class ProfileForm extends StatelessWidget {
   final TextEditingController phoneNumberController;
   final TextEditingController addressController;
   final TextEditingController levelController;
+  final TextEditingController emailController;
 
   const ProfileForm({
     super.key,
@@ -28,6 +29,7 @@ class ProfileForm extends StatelessWidget {
     required this.phoneNumberController,
     required this.addressController,
     required this.levelController,
+    required this.emailController,
   });
 
   @override
@@ -57,6 +59,12 @@ class ProfileForm extends StatelessWidget {
             hintText: localization.admin_home_add_member_name_hint_text,
           ),
         ),
+        FieldTitle(title: localization.employee_email_tag),
+        FieldEntry(
+          controller: emailController,
+          hintText: localization.admin_home_add_member_email_hint_text,
+        ),
+        /*
         FieldTitle(title: localization.employee_designation_tag),
         FieldEntry(
           controller: designationController,
@@ -66,9 +74,8 @@ class ProfileForm extends StatelessWidget {
         FieldEntry(
           controller: levelController,
           hintText: localization.admin_home_add_member_level_hint_text,
-        ),
-        
-      
+        ),*/
+
         FieldTitle(title: localization.employee_mobile_tag),
         BlocBuilder<EmployeeEditProfileBloc, EmployeeEditProfileState>(
             buildWhen: (previous, current) =>
@@ -87,10 +94,51 @@ class ProfileForm extends StatelessWidget {
                     bloc.add(EditProfileNumberChangedEvent(number: value)),
               );
             }),
-        
+        FieldTitle(title: localization.employee_dateOfBirth_tag),
+        const DateOfBirthButton(),
       ],
     );
   }
 }
 
+class DateOfBirthButton extends StatelessWidget {
+  const DateOfBirthButton({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context);
+    final bloc = context.read<EmployeeEditProfileBloc>();
+    return BlocBuilder<EmployeeEditProfileBloc, EmployeeEditProfileState>(
+      buildWhen: (previous, current) =>
+          previous.dateOfBirth != current.dateOfBirth,
+      builder: (context, state) => ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              elevation: 0,
+              shadowColor: context.colorScheme.containerNormal,
+              surfaceTintColor: context.colorScheme.containerNormal,
+              foregroundColor: context.colorScheme.textSecondary,
+              fixedSize: Size(MediaQuery.of(context).size.width, 50),
+              alignment: Alignment.centerLeft,
+              backgroundColor: context.colorScheme.containerNormal,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24),
+              )),
+          onPressed: () async {
+            DateTime? pickedDate = await pickDate(
+                context: context,
+                initialDate: state.dateOfBirth ?? DateTime.now());
+            bloc.add(
+                EditProfileChangeDateOfBirthEvent(dateOfBirth: pickedDate));
+          },
+          child: state.dateOfBirth != null
+              ? Text(localization.date_format_yMMMd(state.dateOfBirth!),
+                  style: AppTextStyle.style16
+                      .copyWith(color: context.colorScheme.textPrimary))
+              : Text(
+                  localization.user_settings_edit_select_tag,
+                  style: AppTextStyle.style16
+                      .copyWith(color: context.colorScheme.textPrimary),
+                )),
+    );
+  }
+}

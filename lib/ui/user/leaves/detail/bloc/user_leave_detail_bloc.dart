@@ -25,11 +25,12 @@ class UserLeaveDetailBloc
       if (leave == null) {
         emit(UserLeaveDetailErrorState(error: firestoreFetchDataError));
       } else {
-        bool canCancel =
-            leave.startDate.areSameOrUpcoming(DateTime.now().dateOnly) &&
-                leave.status == LeaveStatus.pending;
-        emit(UserLeaveDetailSuccessState(
-            leave: leave, showCancelButton: canCancel));
+bool canCancel =
+    leave.startDate.areSameOrUpcoming(DateTime.now().dateOnly) &&
+    leave.status == LeaveStatus.pending &&
+    !(leave.status == LeaveStatus.approved && leave.startDate.isBefore(DateTime.now().dateOnly));
+emit(UserLeaveDetailSuccessState(
+    leave: leave, showCancelButton: canCancel));
       }
     } on Exception {
       emit(UserLeaveDetailErrorState(error: firestoreFetchDataError));

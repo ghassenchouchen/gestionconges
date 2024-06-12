@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -21,6 +23,7 @@ class Leave extends Equatable {
   final String? response;
   final DateTime appliedOn;
   final List<LeaveDayDuration> perDayDuration;
+  final  String? attachmentUrl;
 
   const Leave(
       {required this.leaveId,
@@ -33,7 +36,8 @@ class Leave extends Equatable {
       required this.status,
       required this.appliedOn,
       required this.perDayDuration,
-      this.response});
+      this.response,
+      this.attachmentUrl});
 
   factory Leave.fromFireStore(DocumentSnapshot<Map<String, dynamic>> snapshot,
       SnapshotOptions? options) {
@@ -56,7 +60,8 @@ class Leave extends Equatable {
         reason,
         status,
         appliedOn,
-        response
+        response,
+        //attachment
       ];
 }
 

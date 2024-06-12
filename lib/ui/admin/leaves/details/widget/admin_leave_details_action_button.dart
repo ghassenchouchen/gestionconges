@@ -27,12 +27,15 @@ class AdminLeaveDetailsActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userStateNotifier = getIt<UserStateNotifier>();
-    if ((leaveApplication.leave.status == LeaveStatus.approved &&
-            !(userStateNotifier.isHR &&
-                leaveApplication.employee.role == Role.hr)) ||
-        (leaveApplication.leave.uid == userStateNotifier.employeeId &&
-            leaveApplication.leave.status == LeaveStatus.pending)) {
-      return BlocBuilder<AdminLeaveDetailsBloc, AdminLeaveDetailsState>(
+    DateTime currentDate = DateTime.now();
+
+    if (((leaveApplication.leave.status == LeaveStatus.approved &&
+        !(userStateNotifier.isHR &&
+            leaveApplication.employee.role == Role.hr)) ||
+    (leaveApplication.leave.uid == userStateNotifier.employeeId &&
+        leaveApplication.leave.status == LeaveStatus.pending)) &&
+    currentDate.isBefore(leaveApplication.leave.endDate)) {
+  return BlocBuilder<AdminLeaveDetailsBloc, AdminLeaveDetailsState>(
           buildWhen: (previous, current) =>
               previous.actionStatus != current.actionStatus,
           builder: (context, state) => AppButton(
@@ -41,6 +44,7 @@ class AdminLeaveDetailsActionButton extends StatelessWidget {
                 loading: state.actionStatus == Status.loading,
               ));
     }
+    
     if (leaveApplication.leave.status == LeaveStatus.pending &&
         !(userStateNotifier.isHR &&
             leaveApplication.employee.role == Role.hr)) {

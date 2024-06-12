@@ -15,7 +15,6 @@ import '../../../../data/model/space/space.dart';
 import '../../../../data/services/employee_service.dart';
 import '../../../../data/services/invitation_services.dart';
 import '../../../../data/services/space_service.dart';
-
 @Injectable()
 class JoinSpaceBloc extends Bloc<JoinSpaceEvents, JoinSpaceState> {
   final UserStateNotifier _userManager;
@@ -28,14 +27,14 @@ class JoinSpaceBloc extends Bloc<JoinSpaceEvents, JoinSpaceState> {
   late final List<Invitation> invitations;
 
   JoinSpaceBloc(
-      this._invitationService,
-      this._spaceService,
-      this._userManager,
-      this.accountService,
-      this._employeeService,
-      this._authService,
-      this._notificationService)
-      : super(const JoinSpaceState()) {
+    this._invitationService,
+    this._spaceService,
+    this._userManager,
+    this.accountService,
+    this._employeeService,
+    this._authService,
+    this._notificationService
+  ) : super(const JoinSpaceState()) {
     on<JoinSpaceInitialFetchEvent>(_init);
     on<SelectSpaceEvent>(_joinSpace);
     on<JoinRequestedSpaceEvent>(_joinRequestedSpace);
@@ -47,7 +46,6 @@ class JoinSpaceBloc extends Bloc<JoinSpaceEvents, JoinSpaceState> {
   Future<List<Space>> getRequestedSpaces() async {
     invitations = await _invitationService
         .fetchSpaceInvitationsForUserEmail(_userManager.userEmail!);
-
     return await Future.wait(invitations.map((invitation) async {
       return await _spaceService.getSpace(invitation.spaceId);
     })).then((value) => value.whereNotNull().toList());
@@ -62,77 +60,109 @@ class JoinSpaceBloc extends Bloc<JoinSpaceEvents, JoinSpaceState> {
   }
 
   Future<void> _init(
-      JoinSpaceInitialFetchEvent event, Emitter<JoinSpaceState> emit) async {
+    JoinSpaceInitialFetchEvent event, 
+    Emitter<JoinSpaceState> emit
+  ) async {
     emit(state.copyWith(fetchSpaceStatus: Status.loading));
     try {
       final requestedSpaces = await getRequestedSpaces();
       final ownSpaces = await joinedSpace();
       emit(state.copyWith(
-          fetchSpaceStatus: Status.success,
-          ownSpaces: ownSpaces,
-          requestedSpaces: requestedSpaces));
+        fetchSpaceStatus: Status.success,
+        ownSpaces: ownSpaces,
+        requestedSpaces: requestedSpaces
+      ));
     } on Exception {
       emit(state.copyWith(
-          fetchSpaceStatus: Status.error, error: firestoreFetchDataError));
+        fetchSpaceStatus: Status.error, 
+        error: firestoreFetchDataError
+      ));
     }
   }
 
   Future<void> _joinSpace(
-      SelectSpaceEvent event, Emitter<JoinSpaceState> emit) async {
+    SelectSpaceEvent event, 
+    Emitter<JoinSpaceState> emit
+  ) async {
     emit(state.copyWith(selectSpaceStatus: Status.loading));
     try {
       final employee = await _employeeService.getEmployeeBySpaceId(
-          spaceId: event.space.id, userId: _userManager.userUID!);
+        spaceId: event.space.id, 
+        userId: _userManager.userUID!
+      );
       if (employee != null) {
         await _userManager.setEmployeeWithSpace(
-            space: event.space, spaceUser: employee);
+          space: event.space, 
+          spaceUser: employee
+        );
+        print("Role after setting employee with space: ${employee.role}");
         emit(state.copyWith(selectSpaceStatus: Status.success));
       } else {
         emit(state.copyWith(
-            selectSpaceStatus: Status.error, error: firestoreFetchDataError));
+          selectSpaceStatus: Status.error, 
+          error: firestoreFetchDataError
+        ));
       }
     } on Exception {
       emit(state.copyWith(
-          selectSpaceStatus: Status.error, error: firestoreFetchDataError));
+        selectSpaceStatus: Status.error, 
+        error: firestoreFetchDataError
+      ));
     }
   }
 
   Future<void> _joinRequestedSpace(
-      JoinRequestedSpaceEvent event, Emitter<JoinSpaceState> emit) async {
+    JoinRequestedSpaceEvent event, 
+    Emitter<JoinSpaceState> emit
+  ) async {
     emit(state.copyWith(selectSpaceStatus: Status.loading));
     try {
       final employee = Employee(
-          uid: _userManager.userUID!,
-          name: _userManager.userFirebaseAuthName ??
+        uid: _userManager.userUID!,
+        name: _userManager.userFirebaseAuthName ??
               _userManager.userEmail!.split('.')[0],
-          email: _userManager.userEmail!,
-          role: Role.employee,
-          dateOfJoining: DateTime.now());
+        email: _userManager.userEmail!,
+        role: Role.employee, // Verify that role is being set correctly
+        dateOfJoining: DateTime.now()
+      );
       await _employeeService.addEmployeeBySpaceId(
-          employee: employee, spaceId: event.space.id);
+        employee: employee, 
+        spaceId: event.space.id
+      );
       await accountService.updateSpaceOfUser(
-          spaceID: event.space.id, uid: _userManager.userUID!);
+        spaceID: event.space.id, 
+        uid: _userManager.userUID!
+      );
       await _userManager.setEmployeeWithSpace(
-          space: event.space, spaceUser: employee);
+        space: event.space, 
+        spaceUser: employee
+      );
+      print("Role after joining requested space: ${employee.role}");
       final invitation = getSelectedInvitation(event.space.id);
       await _invitationService.deleteInvitation(id: invitation.id);
       await _notificationService.sendSpaceInviteAcceptNotification(
-          sender: _userManager.userEmail!,
-          receiver: event.space.notificationEmail!);
+        sender: _userManager.userEmail!,
+        receiver: event.space.notificationEmail!
+      );
       emit(state.copyWith(selectSpaceStatus: Status.success));
     } on Exception {
       emit(state.copyWith(
-          selectSpaceStatus: Status.error, error: firestoreFetchDataError));
+        selectSpaceStatus: Status.error, 
+        error: firestoreFetchDataError
+      ));
     }
   }
 
   Invitation getSelectedInvitation(String spaceId) {
-    return invitations
-        .firstWhere((invitation) => invitation.spaceId == spaceId);
+    return invitations.firstWhere(
+      (invitation) => invitation.spaceId == spaceId
+    );
   }
 
   Future<void> _signOut(
-      SignOutEvent event, Emitter<JoinSpaceState> emit) async {
+    SignOutEvent event, 
+    Emitter<JoinSpaceState> emit
+  ) async {
     emit(state.copyWith(signOutStatus: Status.loading));
     try {
       bool isLogOut = await _authService.signOut();
@@ -143,7 +173,10 @@ class JoinSpaceBloc extends Bloc<JoinSpaceEvents, JoinSpaceState> {
         throw Exception(signOutError);
       }
     } on Exception {
-      emit(state.copyWith(error: signOutError, signOutStatus: Status.error));
+      emit(state.copyWith(
+        error: signOutError, 
+        signOutStatus: Status.error
+      ));
     }
   }
 

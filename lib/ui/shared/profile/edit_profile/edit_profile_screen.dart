@@ -24,8 +24,7 @@ class EmployeeEditProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<EmployeeEditProfileBloc>()
-        ..add(EditProfileInitialLoadEvent(
-            dateOfBirth: employee.dateOfBirth)),
+        ..add(EditProfileInitialLoadEvent(dateOfBirth: employee.dateOfBirth)),
       child: EmployeeEditProfileScreen(employee: employee),
     );
   }
@@ -47,6 +46,7 @@ class _EmployeeEditProfileScreenState extends State<EmployeeEditProfileScreen> {
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController levelController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
 
   @override
   void initState() {
@@ -55,6 +55,7 @@ class _EmployeeEditProfileScreenState extends State<EmployeeEditProfileScreen> {
     phoneNumberController.text = widget.employee.phone ?? "";
     addressController.text = widget.employee.address ?? "";
     levelController.text = widget.employee.level ?? "";
+    emailController.text = widget.employee.email ?? "";
     super.initState();
   }
 
@@ -65,6 +66,7 @@ class _EmployeeEditProfileScreenState extends State<EmployeeEditProfileScreen> {
     phoneNumberController.dispose();
     addressController.dispose();
     levelController.dispose();
+    emailController.dispose();
     super.dispose();
   }
 
@@ -86,15 +88,14 @@ class _EmployeeEditProfileScreenState extends State<EmployeeEditProfileScreen> {
               : TextButton(
                   onPressed: state.isDataValid
                       ? () {
-                          context
-                              .read<EmployeeEditProfileBloc>()
-                              .add(EditProfileUpdateProfileEvent(
-                                address: addressController.text,
-                                level: levelController.text,
-                                name: nameController.text,
-                                designation: designationController.text,
-                                phoneNumber: phoneNumberController.text,
-                              ));
+                          context.read<EmployeeEditProfileBloc>().add(
+                              EditProfileUpdateProfileEvent(
+                                  address: addressController.text,
+                                  level: levelController.text,
+                                  name: nameController.text,
+                                  designation: designationController.text,
+                                  phoneNumber: phoneNumberController.text,
+                                  email: emailController.text));
                         }
                       : null,
                   child: state.status == Status.loading
@@ -122,6 +123,7 @@ class _EmployeeEditProfileScreenState extends State<EmployeeEditProfileScreen> {
           designationController: designationController,
           addressController: addressController,
           phoneNumberController: phoneNumberController,
+          emailController: emailController,
         ),
       ),
     );

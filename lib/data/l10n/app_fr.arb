@@ -44,7 +44,7 @@
   "create_new_space_title": "Ajouter département",
   "create_own_space_title": "Ajouter un département",
   "welcome_to_unity_text": "Bienvenue!",
-  "spaces_list_title": "Départements gérés par  {email}",
+  "spaces_list_title": "Départements pour  {email}",
   "@spaces_list_title": {
     "placeholders": {
       "email": {
@@ -120,7 +120,7 @@
       }
     }
   },
-  "user_add_role_type":"{role, select, employee{Employé} hr{Responsable} other{autre}}",
+   "user_add_role_type": "{role, select, 2{Employé} 3{Responsable} other{}}",
   "@user_add_role_type": {
     "description":"Passez la valeur du rôle pour ajouter le rôle",
     "placeholders":{

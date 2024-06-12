@@ -39,8 +39,7 @@ class AuthService {
           .signInWithEmailAndPassword(email: email, password: password);
       user = userCredential.user;
     } on firebase_auth.FirebaseAuthException catch (e) {
-      // Handle Firebase authentication exceptions
-      // (e.g., invalid email/password, user disabled)
+      
       if (e.code == 'user-not-found') {
         throw Exception('Email ou mot de passe incorrect.');
       } else if (e.code == 'wrong-password') {

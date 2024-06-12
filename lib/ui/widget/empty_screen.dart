@@ -12,6 +12,7 @@ class EmptyScreen extends StatelessWidget {
     super.key,
     required this.message,
     required this.title,
+    
   });
 
   @override
@@ -32,7 +33,7 @@ class EmptyScreen extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.03,
             ),
             Text(title,
-                style: AppTextStyle.style20.copyWith(
+                style: AppTextStyle.style18.copyWith(
                     color: context.colorScheme.primary,
                     fontWeight: FontWeight.w700)),
             SizedBox(
