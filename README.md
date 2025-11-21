@@ -1,5 +1,5 @@
 # Leave Management Mobile Application
-LeaveFlow is a leave mangamaent that allows employees to request time off, and managers to approve or reject leave, with a mobile(Android) client.
+LeaveFlow is a mobile leave management application that allows employees to request time off, and managers to approve or reject leave, with a mobile(Android) client.
 # Description
 LeaveFlow helps organizations streamline their leave management process by providing:
 - Leave request submission, approval workflows, and leave history tracking  
@@ -23,4 +23,5 @@ Login Screen
 
 <img src="https://github.com/user-attachments/assets/ae23c940-680b-4f35-85d4-71edfad77fb1" width="225" />
 </p>
+
 
