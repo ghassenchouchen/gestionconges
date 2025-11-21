@@ -5,11 +5,14 @@ LeaveFlow helps organizations streamline their leave management process by provi
 - Leave request submission, approval workflows, and leave history tracking  
 - Role-based permissions (employee, manager, admin)  
 # Tech Stack
-Frontend:  
-  - Android : Flutter, Material UI, BLoC
-Firebase:
+Frontend: Flutter:
+  - Material UI
+  - BLoC
+
+Backend Firebase:
   - Authentication
   - Cloud Firestore
   - Cloud Storage
-
+Testing: Unit tests with mockito
 # Screenshots 
+
